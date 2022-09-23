@@ -1,14 +1,25 @@
 ---
-title: "pwolter.github.io"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
+title: "Blog"
+image: images/pwolter_pic.png
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/pwolter/
+    - icon: github
+      text: Github
+      href: https://github.com/pwolter
 title-block-banner: true
+page-layout: full
 ---
+
+Thank you for being here. I hope you enjoyed what you read!
+
+I am a software engineer interested in big data and analytics as a whole. I like data science, machine learning and all in between.
+
+On my spare time I scuba dive, both recreational and technically. I play ice hockey, run, bike, and snowboard. When seated still, I like to read, listen music and learn new skills.
+
+I am from Chile, but moved around due diferent reasons. Some are intollerance and some my own choices. I live in Seattle, Washington in the United States. I like it here.
 
 
