@@ -16,12 +16,10 @@ website:
         href: https://www.linkedin.com/in/pwolter/
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: flatly
 
 execute:
   freeze: auto
   
-
 filters:
   - code-filename
