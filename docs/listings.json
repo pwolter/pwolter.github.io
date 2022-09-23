@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/posts/archive.html",
+    "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/archive.html",
+      "/posts/sparkify/index.html",
+      "/posts/decade_of_hockey/index.html"
+    ]
+  }
+]

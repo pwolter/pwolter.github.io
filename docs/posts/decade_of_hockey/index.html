@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pablo Wolter">
+<meta name="dcterms.date" content="2020-02-11">
+
+<title>Pablo Wolter - Analyzing a decade of NHL Hockey</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Pablo Wolter</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="dropdown-header">
+ Blog</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Pablo Wolter’s Blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/pwolter">Github</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/pwolter/">LinkedIn</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Analyzing a decade of NHL Hockey</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Data Science</div>
+                <div class="quarto-category">Analytics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pablo Wolter </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 11, 2020</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analyzing-a-decade-of-nhl-hockey" id="toc-analyzing-a-decade-of-nhl-hockey" class="nav-link active" data-scroll-target="#analyzing-a-decade-of-nhl-hockey">Analyzing a decade of NHL Hockey</a>
+  <ul class="collapse">
+  <li><a href="#the-motivation-for-this-work" id="toc-the-motivation-for-this-work" class="nav-link" data-scroll-target="#the-motivation-for-this-work">The motivation for this work</a></li>
+  <li><a href="#what-are-the-leagues-best-goalies" id="toc-what-are-the-leagues-best-goalies" class="nav-link" data-scroll-target="#what-are-the-leagues-best-goalies">What are the league’s best goalies?</a>
+  <ul class="collapse">
+  <li><a href="#eliminate-all-goalies-with-100-save-percentage" id="toc-eliminate-all-goalies-with-100-save-percentage" class="nav-link" data-scroll-target="#eliminate-all-goalies-with-100-save-percentage">Eliminate all goalies with 100% save percentage</a></li>
+  <li><a href="#determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis" id="toc-determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis" class="nav-link" data-scroll-target="#determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis">Determine a minimum number of seasons to be considered in the analysis</a></li>
+  </ul></li>
+  <li><a href="#what-are-the-leagues-best-scorer-players" id="toc-what-are-the-leagues-best-scorer-players" class="nav-link" data-scroll-target="#what-are-the-leagues-best-scorer-players">What are the league’s best scorer players?</a></li>
+  <li><a href="#what-are-the-teams-that-score-more-goals" id="toc-what-are-the-teams-that-score-more-goals" class="nav-link" data-scroll-target="#what-are-the-teams-that-score-more-goals">What are the teams that score more goals?</a></li>
+  <li><a href="#what-are-the-players-that-have-most-penalty-minutes-per-team" id="toc-what-are-the-players-that-have-most-penalty-minutes-per-team" class="nav-link" data-scroll-target="#what-are-the-players-that-have-most-penalty-minutes-per-team">What are the players that have most penalty minutes per team?</a></li>
+  <li><a href="#what-is-the-most-prolific-country-producing-nhl-players" id="toc-what-is-the-most-prolific-country-producing-nhl-players" class="nav-link" data-scroll-target="#what-is-the-most-prolific-country-producing-nhl-players">What is the most prolific country producing NHL players?</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="analyzing-a-decade-of-nhl-hockey" class="level1">
+<h1>Analyzing a decade of NHL Hockey</h1>
+<p>Seasons from 2010 to 2019</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Cover.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption><p></p>
+</figure>
+</div>
+<p>The first time I laced a pair of skates I was just 6 years old. My younger brother was just 4. At age 9 I started training in figure skating. One day I was trying to do a very simple jump I was struggling with following the circle on the right of the rink when the hockey team arrived. I don’t know how to explain it. The sound of their skates in the rink when they stopped just blew my mind. That sound of wheels against the tile. The delicate sound of the ball hitting the stick when passing it. That day I was sold. After my practice, I spoke with my coach and I switched that same day to hockey. The President of the club I played all my amateur career gave me her son’s stick, a small one for junior players. I never figured skated in my life again. Since that day I was a hockey player and was making that beautiful sound myself. This wasn’t ice hockey. This was roller blade hockey, 4 wheels in parallel.</p>
+<section id="the-motivation-for-this-work" class="level2">
+<h2 class="anchored" data-anchor-id="the-motivation-for-this-work">The motivation for this work</h2>
+<p>Today I don’t play it anymore and I never had the chance to play ice hockey. With this work, I am combining my two passions: data science and hockey.</p>
+<p>The principal motivation of this work is to start looking at some answers to questions I have regarding the last decade’s hockey results. I am going to answer the following questions based on the data I found in Kaggle.</p>
+<ol type="1">
+<li>What are the league’s best goalies?</li>
+<li>What are the league’s best scorer players?</li>
+<li>What are the teams that score more goals?</li>
+<li>What are the players that have most penalty minutes per team?</li>
+<li>What is the most prolific country producing NHL players?</li>
+</ol>
+<p>Let’s start our analysis. The notebook with the details and data cleaning and merging of the several CSV files can be found on my <a href="https://github.com/pwolter/HockeyStats">GitHub repository</a>.</p>
+<p>The “Country that produces more NHL players” graph source is <a href="https://public.tableau.com/profile/pablo.wolter#!/vizhome/CountrythatproducesmoreNHLplayers/CountrythatproducesmoreNHLplayers">here</a>. The graph was uploaded to Tableau public for easy access.</p>
+</section>
+<section id="what-are-the-leagues-best-goalies" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-leagues-best-goalies">What are the league’s best goalies?</h2>
+<p>I started with the goalies because I found a very important issue with the save percentage score once I got to them in my work. If we graph the top 10 goalies based on save percentage score in descending order we get the following graph:</p>
+<div id="fig-figure1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption><p></p>
+</figure>
+</div>
+<p>What happened here? None of them are the goalies we are so used to see every game night and all have 100% average save percentages! The answer is these are mostly “<em>emergency goalies</em>”. Do you remember <strong>Scott Foster</strong> who was Blackhawk’s famous contracted emergency goalie? He never suited up for an official game during his tenure with the team. Until that lucky night during the 2017–2018 season when all Blackhawks’ goalies were injured and he was called out to (finally) dress up. He played “<em>the longest 14 minutes of Hockey</em>” of his life as he described it himself in one of the countless interviews he did afterward. He played ~14 minutes and did not receive a goal, so his save percentage is 100% (for his entire NHL career!). To take care of this I considered two alternatives:</p>
+<section id="eliminate-all-goalies-with-100-save-percentage" class="level3">
+<h3 class="anchored" data-anchor-id="eliminate-all-goalies-with-100-save-percentage">Eliminate all goalies with 100% save percentage</h3>
+<p>This alternative is not fair of seasoned goalies and players in general. Veteran goalie players enter the rink to replace the starting goalie when have already received 3–4 goals (or more). So they deserve the good 100% save percentage on these circumstances.</p>
+</section>
+<section id="determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis">Determine a minimum number of seasons to be considered in the analysis</h3>
+<p>This approach also has some caveats as this arises the question of what does make the minimum number of seasons correct? In spite of this concern, I have selected this option. I decided to set a minimum of <strong>5 seasons</strong> with <strong>81 games per season</strong> (41 home ice plus 41 away games).</p>
+<div id="fig-figure2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption><p></p>
+</figure>
+</div>
+<p>Now we see the usual suspects. <strong>Tuukka Rask</strong> being the goalie with better avg. save percentage followed by two of my favorites: <strong>Carey Price</strong> and <strong>Henrik Lundqvist</strong>. As you can see here their numbers are very close to each other. It is thought to be an NHL goalie! The expectations are very high.</p>
+</section>
+</section>
+<section id="what-are-the-leagues-best-scorer-players" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-leagues-best-scorer-players">What are the league’s best scorer players?</h2>
+<p>Let’s start looking at the best players in terms of total goals.</p>
+<div id="fig-figure3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Total_Goals_by_player.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption><p></p>
+</figure>
+</div>
+<p>This does not really tell us the whole story. This is not 100% accurate or fair as there are players that play fewer games than the others but do score more goals per game and/or per time on ice (minutes played per game). Let’s look at the same metric but now taking into account games played.</p>
+<div id="fig-figure4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption><p></p>
+</figure>
+</div>
+<p>The goals per game tell us that <strong>Alex Ovechkin</strong> maintains the first place as he plays a lot of games and scores a lot too! He scores almost a goal every other game. <strong>Steven Stamkos</strong> follows with a very similar number but has played more than 100 fewer games compared with Ovechkin. <strong>Sidney Crosby</strong> and <strong>Evgeni Malkin</strong> had jumped to the top making the <strong>Penguins</strong> a very dangerous team! No surprise almost all are captains of their respective teams and forwards/wings. <strong>Tyler Seguin</strong> from the <strong>Dallas Stars</strong> has played significantly fewer games, just <strong>489</strong> but hold the 5th position, so he’s very effective scoring goals. On the other hand, <strong>Patrick Kane</strong> has the second high position in games played (on this list) but very low goals, positioning him in the second to last spot.</p>
+<p>Let’s look at the players that spend more time on the ice now to see if this relates to the number of goals.</p>
+<div id="fig-figure5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption><p></p>
+</figure>
+</div>
+<p>Sorting the list by time on ice (<strong>TOI</strong>) the top 10 are all <em>defensemen</em>. The average for defense is around <strong>14–25</strong> minutes per game. That is almost half the game! <strong>Ryan Sutter</strong> plays lots of minutes despite not being present in a lot of games. <strong>Drew Doughty</strong> form the <strong>LA Kings</strong> has been playing almost half a game consistently during this decade.</p>
+<p>Filtering out the defensive players out we see the forwards average TOI.</p>
+<div id="fig-figure6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption><p></p>
+</figure>
+</div>
+<p>Forwards play less time on the ice as they tend to skate more. <strong>Anze Kopitar</strong>, <strong>Ryan Getzlaf</strong> and <strong>Sidney Crosby</strong> top the chart. <strong>Alex Ovechkin</strong> doesn’t top this chart but is a very effective player as his goals per game mark.</p>
+</section>
+<section id="what-are-the-teams-that-score-more-goals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-teams-that-score-more-goals">What are the teams that score more goals?</h2>
+<p>I have averaged the Top 3 scorers per team goals to put the scoring power per team into perspective. The following graph shows the team with more scoring power thanks to its three top-scoring players.</p>
+<div id="fig-figure7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption><p></p>
+</figure>
+</div>
+<p>Here we can see the <strong>Sharks</strong> top 3 players scored more goals in the last decade that the rest of the teams. They are followed by the <strong>Blackhawks</strong> and <strong>Penguins</strong> in second and third place respectively as the most dangerous teams. The <strong>Capitals</strong>, however, are just in position #4 despite <strong>Alex Ovechkin’s</strong> tremendous production.</p>
+<p>Surprisingly, when looking at the goals per game by team the <strong>Stars</strong> are the team that scores more goals per game (1 goal every 3 games guaranteed!). They are followed by the <strong>Lightning</strong>, <strong>Panthers</strong> and <strong>Oilers</strong>. The <strong>Penguins</strong> are in the fifth position a little short of scoring 1 goal every three games.</p>
+<div id="fig-figure8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="what-are-the-players-that-have-most-penalty-minutes-per-team" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-players-that-have-most-penalty-minutes-per-team">What are the players that have most penalty minutes per team?</h2>
+<p>Surprisingly these are no defense. They are forwards. Senators <strong>Chris Neil</strong> tops the chart sitting in the penalty box <em>10 times per 6 games</em>!. He is followed by <strong>Cody McLeod</strong> and <strong>Tom Wilson</strong> each sitting in the penalty box once every game. All very well known for their strength and physicality.</p>
+<div id="fig-figure9" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="what-is-the-most-prolific-country-producing-nhl-players" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-most-prolific-country-producing-nhl-players">What is the most prolific country producing NHL players?</h2>
+<p>It should not be any surprise to find out that <strong>Canada</strong> provides more players to the NHL than any other country.</p>
+<div id="fig-figure10" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Hockey_Country.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption><p></p>
+</figure>
+</div>
+<p>The number of <strong>Canadian</strong> players in the last decade total <strong>1,149</strong>. Followed by the <strong>USA</strong> with <strong>651</strong> and then <strong>Sweden</strong> with <strong>184</strong>. Canadian players almost double the number of American players which in turn almost quadruples the number of players from Sweden.</p>
+<div id="fig-figure11" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption><p></p>
+</figure>
+</div>
+<p>The rest of the top 10 countries only totals <strong>380</strong> players.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This is just a descriptive analysis of a decade of NHL hockey. During the duration of this work, a lot more questions arose that I left out from this post to be able to finish it on time. I am planning to follow up this post with a second part where I will try to answer other interesting questions. Things that will come in the future post(s) are, for example:</p>
+<ul>
+<li>How do teams combine penalty minutes relate to the team losing the game?</li>
+<li>Does it have any relation to the team playing in home ice or away?</li>
+<li>Do top scorers make a difference in the last period (3rd period) or Overtime (OT) in the games?</li>
+</ul>
+<p>Did your favorite player show up in the ranking presented in this work? Let me know in the comments. Also, let me know what else will you be interested in seeing analyzed in the second part. Thank you for reading it!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="pwolter/blog_comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
