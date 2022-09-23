@@ -23,4 +23,6 @@ jobs:
           target: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: mv _site docs
+      - name: Move _site to docs
+        run: mv _site docs
+        run: rm -rf _site
