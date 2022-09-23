@@ -7,11 +7,10 @@ crossref:
   chapters: true
 ---
 
-![Photo by Zarak Khan on Unsplash](Sparkyfy-Cover.jpeg)
-
 # Churn prediction using Spark
 A fun churn project in Spark
 
+![Photo by Zarak Khan on Unsplash](Sparkyfy-Cover.jpeg)
 
 You can find the original blog post in Medium [here](https://towardsdatascience.com/churn-prediction-using-spark-d9c2da720bc8)
 
