@@ -143,6 +143,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Project description</a></li>
   <li><a href="#business-understanding" id="toc-business-understanding" class="nav-link" data-scroll-target="#business-understanding">Business understanding</a></li>
   <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding">Data understanding</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a></li>
+  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model selection</a></li>
+  <li><a href="#best-model-selection" id="toc-best-model-selection" class="nav-link" data-scroll-target="#best-model-selection">Best model selection</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -166,15 +171,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="project-description" class="level2">
 <h2 class="anchored" data-anchor-id="project-description">Project description</h2>
 <p>The following project tries to predict user churn rate in a fictitious music streaming service called Sparkify.</p>
-<p>I used Spark in Amazon Web Services (AWS) with an Elastic Map Reduce (EMR) cluster of 3 m5.xlarge machines. One driver and two workers. The dataset size is 12 Gbytes and was read from an AWS Simple Storage Service (S3) bucket in JSON format. This file contains activity registered from users as they used the service daily.</p>
+<p>I used Spark in Amazon Web Services (<strong>AWS</strong>) with an Elastic Map Reduce (<strong>EMR</strong>) cluster of 3 <strong>m5.xlarge</strong> machines. One driver and two workers. The dataset size is 12 Gbytes and was read from an AWS Simple Storage Service (S3) bucket in JSON format. This file contains activity registered from users as they used the service daily.</p>
 <p>As software libraries go I have used: PySpark, Python’s Spark API. AWS EMR version 5.29.0. Logistic Regression, Random Forest, Gradient Boost Trees (GBT) Classifier, and Naive Bayes form Spark’s Machine Learning Library. Pandas and Matplotlib from the standard data science Python stack.</p>
 </section>
 <section id="business-understanding" class="level2">
 <h2 class="anchored" data-anchor-id="business-understanding">Business understanding</h2>
 <p>Churn prediction is an important classification use case for banks, insurance companies, telcos, cable TV operators, and streaming services such as Netflix, Hulu, Spotify, and Apple Music. Companies that can predict customers who are more likely to cancel the subscription to their service can implement a more effective customer retention strategy.</p>
-<p>Customer churn costs companies approximately $136 billion per year according to a study done by a leading customer engagement analytics firm <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Customer churn costs companies approximately <em>$136 billion</em> per year according to a study done by a leading customer engagement analytics firm <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <blockquote class="blockquote">
-<p>Research done by Bain &amp; Company shows increasing customer retention rates by just 5% increases profits by 25% to 95% <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>Research done by Bain &amp; Company shows increasing customer retention rates by just <strong>5%</strong> increases profits by <strong>25%</strong> to <strong>95%</strong> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </blockquote>
 <p>The justification for spending resources in churn reduction is based on a study made by Lee Resource Inc.&nbsp;where they show that attracting new customers can cost a company five times more than keeping an existing one! <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
 </section>
@@ -187,49 +192,139 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">Dataset schema</figcaption><p></p>
 </figure>
 </div>
-<p>We have a total of 22 unique entries in the page category.</p>
-<p>page column content</p>
-<p>I defined a new column called churn that consists of any of Cancellation Confirmation or Submit Downgrade events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
-<p>Distribution of hits per page</p>
-<p>We can see that NextSong page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is Home followed by three that indicate interaction with the service: Thumbs Up, Add to Playlist and, Add Friend. These three indicate a positive experience with the service. On the other hand, we have Roll Advert, Thumbs Down and, Error as possible indicators of a bad experience for users with the service.</p>
-<p>As we can see from the summary, we are facing a very unbalanced dataset. The ratio of no-churn (0) and churn (1) is 2,516.</p>
-<p>There is a total of 225,393 female and 302,612 male users with 15,700 users not revealing their gender that I have categorized as U (Unavailable):</p>
-<p>Imbalanced data set</p>
-<p>Gender column distribution</p>
-<p>We have a total of 428,597 paid users and 115,108 users in the free plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
-<p>paid vs free users</p>
-<p>Data preparation The first thing I tackled was to solve the unbalance issue. I used a technique called over-sampling. It is a very basic method where I took advantage of PySpark’s explode dataframe feature to select as many events from the underrepresented class (churn equals 1 in this case) to fill in the difference until I got a balanced data set to work with.</p>
-<p>There are more advanced methods that I read about it but they are mostly built for Pandas/Numpy dataframes/sets and did not parallelize well in my Spark environment. This definitively needed more time and investigation to find a more robust solution. The most promising method I learned is SMOTE where interested readers can find more details here and here.</p>
+<p>We have a total of 22 unique entries in the <em>page</em> category.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Page_column_content.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">page column content</figcaption><p></p>
+</figure>
+</div>
+<p>I defined a new column called <strong>churn</strong> that consists of any of <strong>Cancellation Confirmation</strong> or <strong>Submit Downgrade</strong> events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribution of hits per page</figcaption><p></p>
+</figure>
+</div>
+<p>We can see that <strong>NextSong</strong> page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is <strong>Home</strong> followed by three that indicate interaction with the service: <strong>Thumbs Up</strong>, <strong>Add to Playlist</strong> and, <strong>Add Friend</strong>. These three indicate a positive experience with the service. On the other hand, we have <strong>Roll Advert</strong>, <strong>Thumbs Down</strong> and, <strong>Error</strong> as possible indicators of a bad experience for users with the service.</p>
+<p><img src="Data-2.png" class="img-fluid"></p>
+<p>As we can see from the summary, we are facing a very unbalanced dataset. The ratio of no-churn (0) and churn (1) is <strong>2,516</strong>.</p>
+<p>There is a total of <strong>225,393 female</strong> and <strong>302,612 male</strong> users with 15,700 users not revealing their gender that I have categorized as <strong>U</strong> (Unavailable):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Gender_column_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gender column distribution</figcaption><p></p>
+</figure>
+</div>
+<p>We have a total of <strong>428,597 paid</strong> users and <strong>115,108</strong> users in the <strong>free</strong> plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="paid_vs_free_users.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">paid vs free users</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>The first thing I tackled was to solve the unbalance issue. I used a technique called <em>over-sampling</em>. It is a very basic method where I took advantage of PySpark’s explode dataframe feature to select as many events from the underrepresented class (churn equals 1 in this case) to fill in the difference until I got a balanced data set to work with.</p>
+<p>There are more advanced methods that I read about it but they are mostly built for <em>Pandas/Numpy</em> dataframes/sets and did not parallelize well in my Spark environment. This definitively needed more time and investigation to find a more robust solution. The most promising method I learned is <strong>SMOTE</strong> where interested readers can find more details <a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">here</a> and <a href="https://arxiv.org/abs/1106.1813">here</a>.</p>
 <p>After applying this technique I have expanded and balanced the dataframe augmenting it ~50%:</p>
-<p>Balanced data set</p>
-<p>Going from a total of 543,705 entries to a total of 1,086,945. This proved very useful as my model’s accuracy improved and I reduced significantly the overfit problems I faced without it. Even though it is not perfect and can be improved further.</p>
-<p>The userAgent provides some information I build two features that I used: os and browser.</p>
-<p>Browser count</p>
-<p>From the browser, we can see that 642,801 use Safari and 249,372 use Firefox.</p>
-<p>Windows is the more used operating system followed by Macintosh and X11 (Linux). iPhone is the 4th more used and compatible maybe means Android?</p>
-<p>I used the ts (timestamp) column to build more features. From the ts I constructed the day_of_week and hour column.</p>
-<p>OS count</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Balanced_data_set.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Balanced data set</figcaption><p></p>
+</figure>
+</div>
+<p>Going from a total of <strong>543,705</strong> entries to a total of <strong>1,086,945</strong>. This proved very useful as my model’s accuracy improved and I reduced significantly the overfit problems I faced without it. Even though it is not perfect and can be improved further.</p>
+<p>The <strong>userAgent</strong> provides some information I build two features that I used: <strong>os</strong> and <strong>browser</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Browser_count.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Browser count</figcaption><p></p>
+</figure>
+</div>
+<p>From the <em>browser</em>, we can see that <strong>642,801</strong> use <strong>Safari</strong> and <strong>249,372</strong> use <strong>Firefox</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="OS_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">OS distribution</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Windows</strong> is the more used operating system followed by <strong>Macintosh</strong> and <strong>X11</strong> (Linux). <strong>iPhone</strong> is the 4th more used and <em>compatible</em> maybe means <strong>Android</strong>?</p>
+<p>I used the <em>ts</em> (timestamp) column to build more features. From the <em>ts</em> I constructed the <strong>day_of_week</strong> and <strong>hour</strong> column.</p>
 <p>Using these new columns we can see that users tend to listen to more songs towards the end of the day. Users start listening after lunch, peaking at 4–5 PM (during the commute drive?).</p>
-<p>Number of songs played by the hour of the day</p>
-<p>Users listen to songs more during weekdays too. Thursday seems to be the day that stands out but not by much to make conclusions.</p>
-<p>Number of songs played by day of the week</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption><p></p>
+</figure>
+</div>
+<p>Users listen to songs more during weekdays too. <strong>Thursday</strong> seems to be the day that stands out but not by much to make conclusions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by day of the week</figcaption><p></p>
+</figure>
+</div>
 <p>I have constructed the following features:</p>
-<p>saved_settings Count of all ‘Save Settings’ page event grouped by ‘userId’ num_songs Count of number of ‘song’ played by users (grouped by ‘userId’) thumbs_up Count of all ‘Thumbs Up’ page event grouped by ‘userId’ num_advertisement Count of all ‘Roll Advert’ page event grouped by ‘userId’ thumbs_down Count of all ‘Thumbs Down’ page event grouped by ‘userId’ playlist_added Count of all ‘Add to Playlist’ page event grouped by ‘userId’ friend_added Count of all ‘Add Friend’ page event grouped by ‘userId’ errors_pages Count of all ‘Error’ page event grouped by ‘userId’ songs_persession Average songs (by ‘Next Song’ page event) played by users (grouped by ‘userId’) on a given session (‘sessionId’) I have used StringIndexer, VectorAssembler and, Normalizer from PySpark ML feature’s library. StringIndexer encodes a string column of labels to a column of label indices. VectorAssembler which is a transformer combines a given list of columns/features into a single vector column as required by the ML algorithms. Finally, a Normalizer is a Transformer that transforms a dataset of Vector rows, normalizing each Vector to have unit norm. It takes parameter p, which specifies the p-norm used for normalization. (p=2 by default.) This normalization can help standardize your input data and improve the behavior of learning algorithms.</p>
-<p>Modeling I have split the dataset in training and testing sets with an 80–20 percent split respectively to move to the modeling phase.</p>
-<p>For modeling, I used Logistic Regression, Random Forest Classifier, GBT Classifier, and Naive Bayes algorithms from the Spark ML library. I measured the best performer, using the F-1 score metric as a parameter for all of them to select the best and fine-tune it.</p>
-<p>F-1 score makes more sense for our churn rate prediction model because we are more interested in the False Negatives and False Positives. The first one because it indicates that we predicted users not leaving that did churn. The second one indicates users we predict leaving that did not leave. With the above, I am not saying that True Negative (predicted users not leaving who leave the service) is not important too!</p>
-<p>Model selection I trained Logistic Regression, Random Forest Classifier, GBT Classifier, and Naive Bayes algorithms with the default parameters on the ‘train’ dataset and evaluated it with the ‘test’ dataset.</p>
-<p>Table 1 — Model results summary</p>
+<ul>
+<li><strong>saved_settings</strong> Count of all ‘<em>Save Settings</em>’ page event grouped by ‘<em>userId</em>’</li>
+<li><strong>num_songs</strong> Count of number of <em>‘song’</em> played by users (grouped by ‘<em>userId</em>’)</li>
+<li><strong>thumbs_up</strong> Count of all ‘<em>Thumbs Up</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>num_advertisement</strong> Count of all ‘<em>Roll Advert</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>thumbs_down</strong> Count of all ‘<em>Thumbs Down</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>playlist_added</strong> Count of all ‘<em>Add to Playlist</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>friend_added</strong> Count of all ‘<em>Add Friend</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>errors_pages</strong> Count of all ‘<em>Error</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>songs_persession</strong> Average songs (by ‘<em>Next Song</em>’ page event) played by users (grouped by <em>‘userId’</em>) on a given session (<em>‘sessionId’</em>)</li>
+</ul>
+<p>I have used StringIndexer, VectorAssembler and, Normalizer from PySpark ML feature’s library. <strong>StringIndexer</strong> encodes a string column of labels to a column of label indices. <strong>VectorAssembler</strong> which is a transformer combines a given list of columns/features into a single vector column as required by the ML algorithms. Finally, a <strong>Normalizer</strong> is a <strong>Transformer</strong> that transforms a dataset of <em>Vector rows</em>, normalizing each <em>Vector</em> to have unit norm. It takes parameter <code>p</code>, which specifies the <code>p-norm</code> used for normalization. (<code>p=2</code> by default.) This normalization can help standardize your input data and improve the behavior of learning algorithms.</p>
+</section>
+<section id="modeling" class="level2">
+<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
+<p>I have split the dataset in training and testing sets with an <strong>80–20</strong> percent split respectively to move to the modeling phase.</p>
+<p>For modeling, I used Logistic Regression, Random Forest Classifier, GBT Classifier, and Naive Bayes algorithms from the Spark ML library. I measured the best performer, using the <code>F-1</code> score metric as a parameter for all of them to select the best and fine-tune it.</p>
+<p><code>F-1</code> score makes more sense for our churn rate prediction model because we are more interested in the <strong>False Negatives</strong> and <strong>False Positives</strong>. The first one because it indicates that we predicted users not leaving that did churn. The second one indicates users we predict leaving that did not leave. With the above, I am not saying that <strong>True Negative</strong> (predicted users not leaving who leave the service) is not important too!</p>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model selection</h2>
+<p>I trained <strong>Logistic Regression</strong>, <strong>Random Forest Classifier</strong>, <strong>GBT Classifier</strong>, and <strong>Naive Bayes</strong> algorithms with the default parameters on the ‘<em>train</em>’ dataset and evaluated it with the ‘<em>test</em>’ dataset.</p>
+<div id="fig-table1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption><p></p>
+</figure>
+</div>
 <p>Where:</p>
-<p>F1 - F-1 score WP - Weighted Precision WR - Weighted Recall</p>
-<p>Best model selection From Table 1 we can see that the best performing model is GBTClassifier. I fine-tuned this model running a Cross-Validation with 5 folds and a parameter grid as follows:</p>
-<p>Parameters grid for model fine-tune</p>
+<ul>
+<li><strong>F1</strong> - F-1 score</li>
+<li><strong>WP</strong> - Weighted Precision</li>
+<li><strong>WR</strong> - Weighted Recall</li>
+</ul>
+</section>
+<section id="best-model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="best-model-selection">Best model selection</h2>
+<p>From <a href="#fig-table1">Figure&nbsp;1.1</a> we can see that the best performing model is <strong>GBTClassifier</strong>. I fine-tuned this model running a <strong>Cross-Validation</strong> with <code>5</code> folds and a parameter grid as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption><p></p>
+</figure>
+</div>
 <p>I evaluated the model with the same metrics as before obtaining the following values:</p>
-<p>Table 2 — Best model parameters summary</p>
-<p>Conclusion As we can see this fine-tuned model provides a 4% increase in all metrics from the previous run and almost a 10% increase compared to the other models!</p>
-<p>Our model predicted 46,435 users leaving who did leave (True Positive) and 58,499 users not leaving who leave the service (True Negative). The model also predicted 13,790 users leaving who did not leave (False Positive) and 4,047 users not leaving who did leave (False Negative).</p>
-<p>Our model though is far from perfect. With a precision of only 77% and a recall of 92% means we predict accurately 2/3 of the churn cases correctly.</p>
-<p>GBTClassifier was the best of all the algorithms I tried in this project and also was the one that took longer to train as it trains one tree after the other. I had issues in the performance of the EMR cluster and had to do some configurations to be successful in training all these models in Spark. For all these details please head to my GitHub repository.</p>
+<div id="fig-table2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>As we can see this fine-tuned model provides a <strong>4%</strong> increase in all metrics from the previous run and almost a <strong>10%</strong> increase compared to the other models!</p>
+<p>Our model predicted <strong>46,435</strong> users leaving who did leave (True Positive) and <strong>58,499</strong> users not leaving who leave the service (True Negative). The model also predicted <strong>13,790</strong> users leaving who did not leave (False Positive) and <strong>4,047</strong> users not leaving who did leave (False Negative).</p>
+<p>Our model though is far from perfect. With a <em>precision</em> of only <strong>77%</strong> and a <em>recall</em> of <strong>92%</strong> means we predict accurately <code>2/3</code> of the churn cases correctly.</p>
+<p><strong>GBTClassifier</strong> was the best of all the algorithms I tried in this project and also was the one that took longer to train as it trains one tree after the other. I had issues in the performance of the EMR cluster and had to do some configurations to be successful in training all these models in Spark. For all these details please head to my <a href="https://github.com/pwolter/sparkify">GitHub</a> repository.</p>
 <p>As I mentioned before there is plenty of room to improve the over/under-sample of this imbalanced dataset. If time and budget permits a more broad grid search can be performed with more hyperparameters than I used here to improve the model performance but that will require, time and budget as EMR is not a free service.</p>
 
 
