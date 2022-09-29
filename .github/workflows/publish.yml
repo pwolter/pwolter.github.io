@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
   push:
-    branches: master
+    branches: main
 
 name: Quarto Publish
 
@@ -23,3 +23,4 @@ jobs:
           target: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: mv _site docs

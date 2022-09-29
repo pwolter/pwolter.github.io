@@ -1,18 +1,16 @@
 *.swp
 ~*
 *~
-
+_site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+vendor
+_notebooks/.ipynb_checkpoints
+
+/.quarto/
+/_site/
 
 .DS_Store
 .gitignore
 .Rproj.user
-
-.quarto
-/.quarto/
-/_site/
-_site
-vendor
-_notebooks/.ipynb_checkpoints

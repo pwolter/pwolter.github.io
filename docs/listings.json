@@ -5,6 +5,10 @@
   },
   {
     "listing": "/blog.html",
-    "items": []
+    "items": [
+      "/posts/archive.html",
+      "/posts/sparkify/index.html",
+      "/posts/decade_of_hockey/index.html"
+    ]
   }
 ]

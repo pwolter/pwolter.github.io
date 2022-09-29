@@ -14,13 +14,6 @@
     "text": "No matching items"
   },
   {
-    "objectID": "posts/Disaster_Response_Pipeline/index.html",
-    "href": "posts/Disaster_Response_Pipeline/index.html",
-    "title": "Disaster Response Pipeline",
-    "section": "",
-    "text": "In this project, we analyzed disaster data provided by Figure Eight to build a Natural Language Processing (NLP) model for an API that classifies disaster messages.\nThe provided data set contains real messages that were sent during disaster events. We have created a machine learning pipeline to categorize these events so that users of the application can send the messages to an appropriate disaster relief agency to take proper and timely action.\nThe project includes a web application were an emergency worker can input a new message and get classification results in several categories. The web application also displays visualizations of the data. The code can be accessed here\n\n\nWe have used the following libraries besides the regular Python Data Science stack:\n\nScikit learn\nNLTK\nsqlalchemy\nFlask\npickle 0.20\nPlotly\nargparser\n\nTo install them just run:\npip install -u scikit-learn nltk sqlalchemy flask pickleshare plotly\n\n\n\nThe project is divided into three main components:\n\n\nA Python script, process_data.py, contains the data cleaning pipeline that:\n\nLoads the messages and categories datasets\nMerges the two datasets\nCleans the data\nStores it in an SQLite database\n\n\n\n\nA Python script, train_classifier.py, that holds the code of the machine learning pipeline that:\n\nLoads data from the SQLite database saved before\nSplits the dataset into training and test sets\nBuilds a text processing and machine learning pipeline\nTrains and tunes a model using GridSearchCV\nOutputs results on the test set\nExports the final model as a pickle file\n\n\n\n\nHolds the code of the Web Interface from which the end-user will enter the message’s text to get the predictions. This page will guide the emergency worker providing predictions about the type of emergency at hand.\n\n\n\n\nThe list of the files used in this project are:\n- app\n|  - template\n|  |- master.html   # main page of web app\n|  |- go.html       # classification result page of web app\n|- run.py           # Flask file that runs the app\n\n- data\n|- disaster_categories.csv  # data to process\n|- disaster_messages.csv    # data to process\n|- process_data.py          # process data and saves it into a database\n|- DisasterResponse.db      # database to save clean data to\n\n- models\n|- train_classifier.py  # machine learning modeling and prediction\n|- classifier.pkl       # saved model\n\n- images\n|- English_No-English.png     # English/No-English messages distribution\n|- Message_distribution.png   # Messages distribution histogram\n\n- README.md\n\n\n\n\n\nRun the following commands in the project’s root directory to set up your database and model.\nTo run ETL pipeline that loads the source CSV files, cleans them and stores the cleaned resulting Pandas Dataframe in a database. Run the following under the data directory.\npython process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db\nTo run ML pipeline that trains classifier and saves the model in a pickle file run the following from the models directory:\npython train_classifier.py ../data/DisasterResponse.db classifier.pkl\nRun the following command in the app directory to run the web application in order to do predictions:\npython run.py\n\nThen go to http://0.0.0.0:3001/ to launch the web interface of the application\nIn the box on the top enter the message to classify and click on the “Classify Message” button."
-  },
-  {
     "objectID": "posts/decade_of_hockey/index.html",
     "href": "posts/decade_of_hockey/index.html",
     "title": "Analyzing a decade of NHL Hockey",
@@ -30,15 +23,15 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Who am I?",
+    "title": "Blog",
     "section": "",
     "text": "I am a software engineer interested in big data and analytics as a whole. I like data science, machine learning and all in between.\nOn my spare time I scuba dive, both recreational and technically. I play ice hockey, run, bike, and snowboard. When seated still, I like to read, listen music and learn new skills.\nI am from Chile, but moved around due diferent reasons. Some are intollerance and some my own choices. I live in Seattle, Washington in the United States. I like it here."
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Pablo Wolter’s Blog",
+    "title": "Blog",
     "section": "",
-    "text": "No matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nSpark\n\n\nML\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nFeb 11, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\nNo matching items"
   }
 ]
