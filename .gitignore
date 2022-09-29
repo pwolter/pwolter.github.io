@@ -14,6 +14,5 @@
 /.quarto/
 /_site/
 _site
-posts
 vendor
 _notebooks/.ipynb_checkpoints
