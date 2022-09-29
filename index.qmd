@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Who am I?"
 image: images/pwolter_pic.png
 about:
   template: jolla
@@ -10,7 +10,7 @@ about:
     - icon: github
       text: Github
       href: https://github.com/pwolter
-title-block-banner: true
+title-block-banner: false
 page-layout: full
 ---
 
