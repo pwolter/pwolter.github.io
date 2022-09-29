@@ -7,8 +7,9 @@
     "listing": "/blog.html",
     "items": [
       "/posts/archive.html",
-      "/posts/sparkify/index.html",
-      "/posts/decade_of_hockey/index.html"
+      "/posts/welcome/index.html",
+      "/posts/Test_Blog/test_Blog.html",
+      "/posts/sparkify/index.html"
     ]
   }
 ]
