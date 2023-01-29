@@ -1,7 +1,7 @@
 ---
 title: "Blog"
 listing:
-  contents: docs/posts/**/*.qmd
+  contents: posts/**/*.qmd
   sort: "date desc"
   type: default
   categories: true
@@ -14,3 +14,4 @@ title-block-banner: true
 ---
 
 
+<!-- docs/posts/**/*.qmd -->
