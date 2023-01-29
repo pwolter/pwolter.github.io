@@ -10,6 +10,666 @@
 <atom:link href="https://pwolter.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my ideas, work and dreams. Maybe</description>
 <generator>quarto-1.1.251</generator>
-<lastBuildDate>Sun, 29 Jan 2023 20:25:32 GMT</lastBuildDate>
+<lastBuildDate>Wed, 01 Jun 2022 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>This is a dummy blog posts</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://pwolter.github.io/posts/Test_Blog/test_Blog.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="heading-1" class="level1 page-columns page-full">
+<h1>Heading 1</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit est nec dui eleifend, at dictum elit ullamcorper. Aliquam feugiat dictum bibendum. Praesent fermentum laoreet quam, cursus volutpat odio dapibus in. Fusce luctus porttitor vehicula. Donec ac tortor nisi. Donec at lectus tortor. Morbi tempor, nibh non euismod viverra, metus arcu aliquet elit, sed fringilla urna leo vel purus.</p>
+<section id="merriweather" class="level2">
+<h2 class="anchored" data-anchor-id="merriweather">Merriweather</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit est nec dui eleifend, at dictum elit ullamcorper. <strong>Aliquam feugiat dictum bibendum.</strong> Praesent fermentum laoreet quam, cursus volutpat odio dapibus in. <a href="https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss">Fusce luctus</a> porttitor vehicula. Donec ac tortor nisi. Donec at lectus tortor. Morbi tempor, nibh non euismod viverra, metus arcu aliquet elit, sed fringilla urna leo vel purus.</p>
+<section id="code" class="level3">
+<h3 class="anchored" data-anchor-id="code">3 - Code</h3>
+<p>This is <code>inline</code> code plus a small code chunk.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">ggplot</span>(mpg) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-3">  <span class="fu" style="color: #4758AB;">geom_jitter</span>(<span class="fu" style="color: #4758AB;">aes</span>(cty, hwy), <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.5</span>) </span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://pwolter.github.io/posts/Test_Blog/test_Blog_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="tabsets" class="level3">
+<h3 class="anchored" data-anchor-id="tabsets">3 - Tabsets</h3>
+<div class="cell">
+
+</div>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Transforming OLS estimates</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">Maximizing likelihood</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">preds_lm <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> correct)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;">geom_jitter</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.6</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;">facet_wrap</span>(<span class="fu" style="color: #4758AB;">vars</span>(species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;">scale_color_manual</span>(<span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'grey60'</span>, thematic<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">okabe_ito</span>(<span class="dv" style="color: #AD0000;">3</span>)[<span class="dv" style="color: #AD0000;">3</span>])) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-6">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">3000</span>, <span class="dv" style="color: #AD0000;">6000</span>, <span class="dv" style="color: #AD0000;">1000</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;">theme_minimal</span>(<span class="at" style="color: #657422;">base_size =</span> <span class="dv" style="color: #AD0000;">12</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-8">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb2-9">    <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">'top'</span>, </span>
+<span id="cb2-10">    <span class="at" style="color: #657422;">panel.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">'black'</span>),</span>
+<span id="cb2-11">    <span class="at" style="color: #657422;">panel.grid.minor =</span> <span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb2-12">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-13">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb2-14">    <span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">'Body mass (in g)'</span>,</span>
+<span id="cb2-15">    <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">'Bill length (in mm)'</span></span>
+<span id="cb2-16">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://pwolter.github.io/posts/Test_Blog/test_Blog_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<div class="cell" data-fig.showtext="false">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">glm.mod <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">glm</span>(sex <span class="sc" style="color: #5E5E5E;">~</span> body_mass_g <span class="sc" style="color: #5E5E5E;">+</span> bill_length_mm <span class="sc" style="color: #5E5E5E;">+</span> species, <span class="at" style="color: #657422;">family =</span> binomial, <span class="at" style="color: #657422;">data =</span> dat)</span>
+<span id="cb3-2">preds <span class="ot" style="color: #003B4F;">&lt;-</span> dat <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;">mutate</span>(</span>
+<span id="cb3-4">    <span class="at" style="color: #657422;">prob.fit =</span> glm.mod<span class="sc" style="color: #5E5E5E;">$</span>fitted.values,</span>
+<span id="cb3-5">    <span class="at" style="color: #657422;">prediction =</span> <span class="fu" style="color: #4758AB;">if_else</span>(prob.fit <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="fl" style="color: #AD0000;">0.5</span>, <span class="st" style="color: #20794D;">'male'</span>, <span class="st" style="color: #20794D;">'female'</span>),</span>
+<span id="cb3-6">    <span class="at" style="color: #657422;">correct =</span> <span class="fu" style="color: #4758AB;">if_else</span>(sex <span class="sc" style="color: #5E5E5E;">==</span> prediction, <span class="st" style="color: #20794D;">'correct'</span>, <span class="st" style="color: #20794D;">'incorrect'</span>)</span>
+<span id="cb3-7">  )</span>
+<span id="cb3-8">preds <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb3-9">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(body_mass_g, bill_length_mm, <span class="at" style="color: #657422;">col =</span> correct)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-10">  <span class="fu" style="color: #4758AB;">geom_jitter</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.6</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;">facet_wrap</span>(<span class="fu" style="color: #4758AB;">vars</span>(species)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">3000</span>, <span class="dv" style="color: #AD0000;">6000</span>, <span class="dv" style="color: #AD0000;">1000</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-13">  <span class="fu" style="color: #4758AB;">scale_color_manual</span>(<span class="at" style="color: #657422;">values =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">'grey60'</span>, thematic<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">okabe_ito</span>(<span class="dv" style="color: #AD0000;">3</span>)[<span class="dv" style="color: #AD0000;">3</span>])) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-14">  <span class="fu" style="color: #4758AB;">theme_minimal</span>(<span class="at" style="color: #657422;">base_size =</span> <span class="dv" style="color: #AD0000;">10</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-15">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb3-16">    <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">'top'</span>, </span>
+<span id="cb3-17">    <span class="at" style="color: #657422;">panel.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">'black'</span>),</span>
+<span id="cb3-18">    <span class="at" style="color: #657422;">panel.grid.minor =</span> <span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb3-19">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-20">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb3-21">    <span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">'Body mass (in g)'</span>,</span>
+<span id="cb3-22">    <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">'Bill length (in mm)'</span></span>
+<span id="cb3-23">  )</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://pwolter.github.io/posts/Test_Blog/test_Blog_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="some-math-stuff" class="level4">
+<h4 class="anchored" data-anchor-id="some-math-stuff">4 - Some math stuff</h4>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cint_0%5E1%20f(x)%20%5C%20dx%0A"></p>
+</section>
+</section>
+</section>
+<section id="columns" class="level2">
+<h2 class="anchored" data-anchor-id="columns">2 - Columns</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell quarto-layout-cell" data-fig.showtext="false" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">geom_density</span>(</span>
+<span id="cb4-2">  <span class="at" style="color: #657422;">mapping =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb4-3">  <span class="at" style="color: #657422;">data =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb4-4">  <span class="at" style="color: #657422;">stat =</span> <span class="st" style="color: #20794D;">"density"</span>,</span>
+<span id="cb4-5">  <span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"identity"</span>,</span>
+<span id="cb4-6">  ...,</span>
+<span id="cb4-7">  <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">FALSE</span>,</span>
+<span id="cb4-8">  <span class="at" style="color: #657422;">orientation =</span> <span class="cn" style="color: #8f5902;">NA</span>,</span>
+<span id="cb4-9">  <span class="at" style="color: #657422;">show.legend =</span> <span class="cn" style="color: #8f5902;">NA</span>,</span>
+<span id="cb4-10">  <span class="at" style="color: #657422;">inherit.aes =</span> <span class="cn" style="color: #8f5902;">TRUE</span>,</span>
+<span id="cb4-11">  <span class="at" style="color: #657422;">outline.type =</span> <span class="st" style="color: #20794D;">"upper"</span></span>
+<span id="cb4-12">)</span></code></pre></div>
+</div>
+<div class="cell quarto-layout-cell" data-fig.showtext="false" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">stat_density</span>(</span>
+<span id="cb5-2">  <span class="at" style="color: #657422;">mapping =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb5-3">  <span class="at" style="color: #657422;">data =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb5-4">  <span class="at" style="color: #657422;">geom =</span> <span class="st" style="color: #20794D;">"area"</span>,</span>
+<span id="cb5-5">  <span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"stack"</span>,</span>
+<span id="cb5-6">  ...,</span>
+<span id="cb5-7">  <span class="at" style="color: #657422;">bw =</span> <span class="st" style="color: #20794D;">"nrd0"</span>,</span>
+<span id="cb5-8">  <span class="at" style="color: #657422;">adjust =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
+<span id="cb5-9">  <span class="at" style="color: #657422;">kernel =</span> <span class="st" style="color: #20794D;">"gaussian"</span>,</span>
+<span id="cb5-10">  <span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">512</span>,</span>
+<span id="cb5-11">  <span class="at" style="color: #657422;">trim =</span> <span class="cn" style="color: #8f5902;">FALSE</span>,</span>
+<span id="cb5-12">  <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">FALSE</span>,</span>
+<span id="cb5-13">  <span class="at" style="color: #657422;">orientation =</span> <span class="cn" style="color: #8f5902;">NA</span>,</span>
+<span id="cb5-14">  <span class="at" style="color: #657422;">show.legend =</span> <span class="cn" style="color: #8f5902;">NA</span>,</span>
+<span id="cb5-15">  <span class="at" style="color: #657422;">inherit.aes =</span> <span class="cn" style="color: #8f5902;">TRUE</span></span>
+<span id="cb5-16">)</span></code></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="margin-captions" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="margin-captions">2 - Margin captions</h2>
+<div class="cell page-columns page-full" data-fig.showtext="false">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data =</span> gapminder<span class="sc" style="color: #5E5E5E;">::</span>gapminder, <span class="at" style="color: #657422;">mapping =</span> <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> lifeExp, <span class="at" style="color: #657422;">fill =</span> continent)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;">stat_density</span>(<span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"identity"</span>, <span class="at" style="color: #657422;">alpha =</span> <span class="fl" style="color: #AD0000;">0.5</span>)</span></code></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://pwolter.github.io/posts/Test_Blog/test_Blog_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Bla bla bla. This is a caption in the margin. Super cool isn’t it?</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>123</category>
+  <category>Second Tag</category>
+  <guid>https://pwolter.github.io/posts/Test_Blog/test_Blog.html</guid>
+  <pubDate>Wed, 01 Jun 2022 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Churn prediction using Spark</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://pwolter.github.io/posts/sparkify/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Photo by Zarak Khan on Unsplash</figcaption><p></p>
+</figure>
+</div>
+<section id="churn-prediction-using-spark" class="level1">
+<h1>Churn prediction using Spark</h1>
+<p>A fun churn project in Spark</p>
+<p>You can find the original blog post in Medium <a href="https://towardsdatascience.com/churn-prediction-using-spark-d9c2da720bc8">here</a></p>
+<section id="project-description" class="level2">
+<h2 class="anchored" data-anchor-id="project-description">Project description</h2>
+<p>The following project tries to predict user churn rate in a fictitious music streaming service called Sparkify.</p>
+<p>I used Spark in Amazon Web Services (<strong>AWS</strong>) with an Elastic Map Reduce (<strong>EMR</strong>) cluster of 3 <strong>m5.xlarge</strong> machines. One driver and two workers. The dataset size is 12 Gbytes and was read from an AWS Simple Storage Service (S3) bucket in JSON format. This file contains activity registered from users as they used the service daily.</p>
+<p>As software libraries go I have used: PySpark, Python’s Spark API. AWS EMR version 5.29.0. Logistic Regression, Random Forest, Gradient Boost Trees (GBT) Classifier, and Naive Bayes form Spark’s Machine Learning Library. Pandas and Matplotlib from the standard data science Python stack.</p>
+</section>
+<section id="business-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="business-understanding">Business understanding</h2>
+<p>Churn prediction is an important classification use case for banks, insurance companies, telcos, cable TV operators, and streaming services such as Netflix, Hulu, Spotify, and Apple Music. Companies that can predict customers who are more likely to cancel the subscription to their service can implement a more effective customer retention strategy.</p>
+<p>Customer churn costs companies approximately <em>$136 billion</em> per year according to a study done by a leading customer engagement analytics firm <sup>1</sup>.</p>
+<blockquote class="blockquote">
+<p>Research done by Bain &amp; Company shows increasing customer retention rates by just <strong>5%</strong> increases profits by <strong>25%</strong> to <strong>95%</strong> <sup>2</sup>.</p>
+</blockquote>
+<p>The justification for spending resources in churn reduction is based on a study made by Lee Resource Inc.&nbsp;where they show that attracting new customers can cost a company five times more than keeping an existing one! <sup>3</sup>.</p>
+</section>
+<section id="data-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding">Data understanding</h2>
+<p>The dataset has a total of <strong>543,705 rows</strong> and <strong>18 columns</strong>. The schema is the following:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Data-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Dataset schema</figcaption><p></p>
+</figure>
+</div>
+<p>We have a total of 22 unique entries in the <em>page</em> category.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Page_column_content.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">page column content</figcaption><p></p>
+</figure>
+</div>
+<p>I defined a new column called <strong>churn</strong> that consists of any of <strong>Cancellation Confirmation</strong> or <strong>Submit Downgrade</strong> events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribution of hits per page</figcaption><p></p>
+</figure>
+</div>
+<p>We can see that <strong>NextSong</strong> page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is <strong>Home</strong> followed by three that indicate interaction with the service: <strong>Thumbs Up</strong>, <strong>Add to Playlist</strong> and, <strong>Add Friend</strong>. These three indicate a positive experience with the service. On the other hand, we have <strong>Roll Advert</strong>, <strong>Thumbs Down</strong> and, <strong>Error</strong> as possible indicators of a bad experience for users with the service.</p>
+<p><img src="https://pwolter.github.io/posts/sparkify/Data-2.png" class="img-fluid"></p>
+<p>As we can see from the summary, we are facing a very unbalanced dataset. The ratio of no-churn (0) and churn (1) is <strong>2,516</strong>.</p>
+<p>There is a total of <strong>225,393 female</strong> and <strong>302,612 male</strong> users with 15,700 users not revealing their gender that I have categorized as <strong>U</strong> (Unavailable):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Gender_column_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gender column distribution</figcaption><p></p>
+</figure>
+</div>
+<p>We have a total of <strong>428,597 paid</strong> users and <strong>115,108</strong> users in the <strong>free</strong> plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/paid_vs_free_users.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">paid vs free users</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>The first thing I tackled was to solve the unbalance issue. I used a technique called <em>over-sampling</em>. It is a very basic method where I took advantage of PySpark’s explode dataframe feature to select as many events from the underrepresented class (churn equals 1 in this case) to fill in the difference until I got a balanced data set to work with.</p>
+<p>There are more advanced methods that I read about it but they are mostly built for <em>Pandas/Numpy</em> dataframes/sets and did not parallelize well in my Spark environment. This definitively needed more time and investigation to find a more robust solution. The most promising method I learned is <strong>SMOTE</strong> where interested readers can find more details <a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">here</a> and <a href="https://arxiv.org/abs/1106.1813">here</a>.</p>
+<p>After applying this technique I have expanded and balanced the dataframe augmenting it ~50%:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Balanced_data_set.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Balanced data set</figcaption><p></p>
+</figure>
+</div>
+<p>Going from a total of <strong>543,705</strong> entries to a total of <strong>1,086,945</strong>. This proved very useful as my model’s accuracy improved and I reduced significantly the overfit problems I faced without it. Even though it is not perfect and can be improved further.</p>
+<p>The <strong>userAgent</strong> provides some information I build two features that I used: <strong>os</strong> and <strong>browser</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Browser_count.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Browser count</figcaption><p></p>
+</figure>
+</div>
+<p>From the <em>browser</em>, we can see that <strong>642,801</strong> use <strong>Safari</strong> and <strong>249,372</strong> use <strong>Firefox</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/OS_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">OS distribution</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Windows</strong> is the more used operating system followed by <strong>Macintosh</strong> and <strong>X11</strong> (Linux). <strong>iPhone</strong> is the 4th more used and <em>compatible</em> maybe means <strong>Android</strong>?</p>
+<p>I used the <em>ts</em> (timestamp) column to build more features. From the <em>ts</em> I constructed the <strong>day_of_week</strong> and <strong>hour</strong> column.</p>
+<p>Using these new columns we can see that users tend to listen to more songs towards the end of the day. Users start listening after lunch, peaking at 4–5 PM (during the commute drive?).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption><p></p>
+</figure>
+</div>
+<p>Users listen to songs more during weekdays too. <strong>Thursday</strong> seems to be the day that stands out but not by much to make conclusions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by day of the week</figcaption><p></p>
+</figure>
+</div>
+<p>I have constructed the following features:</p>
+<ul>
+<li><strong>saved_settings</strong> Count of all ‘<em>Save Settings</em>’ page event grouped by ‘<em>userId</em>’</li>
+<li><strong>num_songs</strong> Count of number of <em>‘song’</em> played by users (grouped by ‘<em>userId</em>’)</li>
+<li><strong>thumbs_up</strong> Count of all ‘<em>Thumbs Up</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>num_advertisement</strong> Count of all ‘<em>Roll Advert</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>thumbs_down</strong> Count of all ‘<em>Thumbs Down</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>playlist_added</strong> Count of all ‘<em>Add to Playlist</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>friend_added</strong> Count of all ‘<em>Add Friend</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>errors_pages</strong> Count of all ‘<em>Error</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>songs_persession</strong> Average songs (by ‘<em>Next Song</em>’ page event) played by users (grouped by <em>‘userId’</em>) on a given session (<em>‘sessionId’</em>)</li>
+</ul>
+<p>I have used StringIndexer, VectorAssembler and, Normalizer from PySpark ML feature’s library. <strong>StringIndexer</strong> encodes a string column of labels to a column of label indices. <strong>VectorAssembler</strong> which is a transformer combines a given list of columns/features into a single vector column as required by the ML algorithms. Finally, a <strong>Normalizer</strong> is a <strong>Transformer</strong> that transforms a dataset of <em>Vector rows</em>, normalizing each <em>Vector</em> to have unit norm. It takes parameter <code>p</code>, which specifies the <code>p-norm</code> used for normalization. (<code>p=2</code> by default.) This normalization can help standardize your input data and improve the behavior of learning algorithms.</p>
+</section>
+<section id="modeling" class="level2">
+<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
+<p>I have split the dataset in training and testing sets with an <strong>80–20</strong> percent split respectively to move to the modeling phase.</p>
+<p>For modeling, I used Logistic Regression, Random Forest Classifier, GBT Classifier, and Naive Bayes algorithms from the Spark ML library. I measured the best performer, using the <code>F-1</code> score metric as a parameter for all of them to select the best and fine-tune it.</p>
+<p><code>F-1</code> score makes more sense for our churn rate prediction model because we are more interested in the <strong>False Negatives</strong> and <strong>False Positives</strong>. The first one because it indicates that we predicted users not leaving that did churn. The second one indicates users we predict leaving that did not leave. With the above, I am not saying that <strong>True Negative</strong> (predicted users not leaving who leave the service) is not important too!</p>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model selection</h2>
+<p>I trained <strong>Logistic Regression</strong>, <strong>Random Forest Classifier</strong>, <strong>GBT Classifier</strong>, and <strong>Naive Bayes</strong> algorithms with the default parameters on the ‘<em>train</em>’ dataset and evaluated it with the ‘<em>test</em>’ dataset.</p>
+<div id="fig-table1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption><p></p>
+</figure>
+</div>
+<p>Where:</p>
+<ul>
+<li><strong>F1</strong> - F-1 score</li>
+<li><strong>WP</strong> - Weighted Precision</li>
+<li><strong>WR</strong> - Weighted Recall</li>
+</ul>
+</section>
+<section id="best-model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="best-model-selection">Best model selection</h2>
+<p>From Figure&nbsp;1.1 we can see that the best performing model is <strong>GBTClassifier</strong>. I fine-tuned this model running a <strong>Cross-Validation</strong> with <code>5</code> folds and a parameter grid as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption><p></p>
+</figure>
+</div>
+<p>I evaluated the model with the same metrics as before obtaining the following values:</p>
+<div id="fig-table2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/sparkify/Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>As we can see this fine-tuned model provides a <strong>4%</strong> increase in all metrics from the previous run and almost a <strong>10%</strong> increase compared to the other models!</p>
+<p>Our model predicted <strong>46,435</strong> users leaving who did leave (True Positive) and <strong>58,499</strong> users not leaving who leave the service (True Negative). The model also predicted <strong>13,790</strong> users leaving who did not leave (False Positive) and <strong>4,047</strong> users not leaving who did leave (False Negative).</p>
+<p>Our model though is far from perfect. With a <em>precision</em> of only <strong>77%</strong> and a <em>recall</em> of <strong>92%</strong> means we predict accurately <code>2/3</code> of the churn cases correctly.</p>
+<p><strong>GBTClassifier</strong> was the best of all the algorithms I tried in this project and also was the one that took longer to train as it trains one tree after the other. I had issues in the performance of the EMR cluster and had to do some configurations to be successful in training all these models in Spark. For all these details please head to my <a href="https://github.com/pwolter/sparkify">GitHub</a> repository.</p>
+<p>As I mentioned before there is plenty of room to improve the over/under-sample of this imbalanced dataset. If time and budget permits a more broad grid search can be performed with more hyperparameters than I used here to improve the model performance but that will require, time and budget as EMR is not a free service.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.globenewswire.com/news-release/2018/09/27/1577343/0/en/New-research-finds-not-valuing-customers-leads-to-136-billion-switching-epidemic.html">New research finds not valuing customers leads to 136 billion switching epidemic</a>↩︎</p></li>
+<li id="fn2"><p><a href="https://www2.bain.com/Images/BB_Prescription_cutting_costs.pdf">BB_Prescription_cutting_costs.pdf</a>↩︎</p></li>
+<li id="fn3"><p><a href="https://www.forbes.com/sites/alexlawrence/2012/11/01/five-customer-retention-tipsfor-entrepreneurs/">Five customer retention tips for entrepreneurs</a>↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>Spark</category>
+  <category>ML</category>
+  <category>Analytics</category>
+  <guid>https://pwolter.github.io/posts/sparkify/index.html</guid>
+  <pubDate>Sat, 09 May 2020 07:00:00 GMT</pubDate>
+  <media:content url="https://pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Disaster Response Pipeline</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="disaster-response-pipeline-project" class="level1">
+<h1>Disaster Response Pipeline Project</h1>
+<p><img src="https://pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" class="img-fluid"></p>
+<p>In this project, we analyzed disaster data provided by <a href="https://www.figure-eight.com/">Figure Eight</a> to build a <strong>Natural Language Processing (NLP)</strong> model for an API that classifies disaster messages.</p>
+<p>The provided data set contains real messages that were sent during disaster events. We have created a machine learning pipeline to categorize these events so that users of the application can send the messages to an appropriate disaster relief agency to take proper and timely action.</p>
+<p>The project includes a web application were an emergency worker can input a new message and get classification results in several categories. The web application also displays visualizations of the data. The code can be accessed <a href="https://github.com/pwolter/DisasterRecovery">here</a></p>
+<section id="libraries-used" class="level2">
+<h2 class="anchored" data-anchor-id="libraries-used">Libraries used</h2>
+<p>We have used the following libraries besides the regular Python Data Science stack:</p>
+<ul>
+<li>Scikit learn</li>
+<li>NLTK</li>
+<li>sqlalchemy</li>
+<li>Flask</li>
+<li>pickle 0.20</li>
+<li>Plotly</li>
+<li>argparser</li>
+</ul>
+<p>To install them just run:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">pip</span> install <span class="at" style="color: #657422;">-u</span> scikit-learn nltk sqlalchemy flask pickleshare plotly</span></code></pre></div>
+</section>
+<section id="project-description" class="level2">
+<h2 class="anchored" data-anchor-id="project-description">Project description</h2>
+<p>The project is divided into three main components:</p>
+<section id="etl-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="etl-pipeline">1. ETL Pipeline</h3>
+<p>A Python script, <code>process_data.py</code>, contains the data cleaning pipeline that:</p>
+<ul>
+<li>Loads the messages and categories datasets</li>
+<li>Merges the two datasets</li>
+<li>Cleans the data</li>
+<li>Stores it in an SQLite database</li>
+</ul>
+</section>
+<section id="ml-pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="ml-pipeline">2. ML Pipeline</h3>
+<p>A Python script, <code>train_classifier.py</code>, that holds the code of the machine learning pipeline that:</p>
+<ul>
+<li>Loads data from the SQLite database saved before</li>
+<li>Splits the dataset into training and test sets</li>
+<li>Builds a text processing and machine learning pipeline</li>
+<li>Trains and tunes a model using GridSearchCV</li>
+<li>Outputs results on the test set</li>
+<li>Exports the final model as a pickle file</li>
+</ul>
+</section>
+<section id="flask-web-app" class="level3">
+<h3 class="anchored" data-anchor-id="flask-web-app">3. Flask Web App</h3>
+<p>Holds the code of the <strong>Web Interface</strong> from which the end-user will enter the message’s text to get the predictions. This page will guide the emergency worker providing predictions about the type of emergency at hand.</p>
+</section>
+</section>
+<section id="files-description" class="level2">
+<h2 class="anchored" data-anchor-id="files-description">Files description</h2>
+<p>The list of the files used in this project are:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1">- app</span>
+<span id="cb2-2">|  - template</span>
+<span id="cb2-3">|  |- master.html   # main page of web app</span>
+<span id="cb2-4">|  |- go.html       # classification result page of web app</span>
+<span id="cb2-5">|- run.py           # Flask file that runs the app</span>
+<span id="cb2-6"></span>
+<span id="cb2-7">- data</span>
+<span id="cb2-8">|- disaster_categories.csv  # data to process</span>
+<span id="cb2-9">|- disaster_messages.csv    # data to process</span>
+<span id="cb2-10">|- process_data.py          # process data and saves it into a database</span>
+<span id="cb2-11">|- DisasterResponse.db      # database to save clean data to</span>
+<span id="cb2-12"></span>
+<span id="cb2-13">- models</span>
+<span id="cb2-14">|- train_classifier.py  # machine learning modeling and prediction</span>
+<span id="cb2-15">|- classifier.pkl       # saved model</span>
+<span id="cb2-16"></span>
+<span id="cb2-17">- images</span>
+<span id="cb2-18">|- English_No-English.png     # English/No-English messages distribution</span>
+<span id="cb2-19">|- Message_distribution.png   # Messages distribution histogram</span>
+<span id="cb2-20"></span>
+<span id="cb2-21">- README.md</span></code></pre></div>
+<p><img src="https://pwolter.github.io/posts/Disaster_Response_Pipeline/English_No-English.png" class="img-fluid"></p>
+</section>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<ol type="1">
+<li><p>Run the following commands in the project’s root directory to set up your database and model.</p>
+<p>To run ETL pipeline that loads the source CSV files, cleans them and stores the cleaned resulting Pandas Dataframe in a database. Run the following under the data directory.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db</span></code></pre></div>
+<p>To run ML pipeline that trains classifier and saves the model in a pickle file run the following from the models directory:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">python train_classifier.py ..<span class="op" style="color: #5E5E5E;">/</span>data<span class="op" style="color: #5E5E5E;">/</span>DisasterResponse.db classifier.pkl</span></code></pre></div></li>
+<li><p>Run the following command in the app directory to run the web application in order to do predictions:</p>
+<pre><code>python run.py</code></pre></li>
+</ol>
+<p>Then go to <code>http://0.0.0.0:3001/</code> to launch the web interface of the application</p>
+<p>In the box on the top enter the message to classify and click on the “<strong>Classify Message</strong>” button.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Data Science</category>
+  <category>Analytics</category>
+  <category>NLP</category>
+  <guid>https://pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</guid>
+  <pubDate>Mon, 09 Mar 2020 07:00:00 GMT</pubDate>
+  <media:content url="https://pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" medium="image" type="image/png" height="69" width="144"/>
+</item>
+<item>
+  <title>Analyzing a decade of NHL Hockey</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://pwolter.github.io/posts/decade_of_hockey/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="analyzing-a-decade-of-nhl-hockey" class="level1">
+<h1>Analyzing a decade of NHL Hockey</h1>
+<p>Seasons from 2010 to 2019</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption><p></p>
+</figure>
+</div>
+<p>The first time I laced a pair of skates I was just 6 years old. My younger brother was just 4. At age 9 I started training in figure skating. One day I was trying to do a very simple jump I was struggling with following the circle on the right of the rink when the hockey team arrived. I don’t know how to explain it. The sound of their skates in the rink when they stopped just blew my mind. That sound of wheels against the tile. The delicate sound of the ball hitting the stick when passing it. That day I was sold. After my practice, I spoke with my coach and I switched that same day to hockey. The President of the club I played all my amateur career gave me her son’s stick, a small one for junior players. I never figured skated in my life again. Since that day I was a hockey player and was making that beautiful sound myself. This wasn’t ice hockey. This was roller blade hockey, 4 wheels in parallel.</p>
+<section id="the-motivation-for-this-work" class="level2">
+<h2 class="anchored" data-anchor-id="the-motivation-for-this-work">The motivation for this work</h2>
+<p>Today I don’t play it anymore and I never had the chance to play ice hockey. With this work, I am combining my two passions: data science and hockey.</p>
+<p>The principal motivation of this work is to start looking at some answers to questions I have regarding the last decade’s hockey results. I am going to answer the following questions based on the data I found in Kaggle.</p>
+<ol type="1">
+<li>What are the league’s best goalies?</li>
+<li>What are the league’s best scorer players?</li>
+<li>What are the teams that score more goals?</li>
+<li>What are the players that have most penalty minutes per team?</li>
+<li>What is the most prolific country producing NHL players?</li>
+</ol>
+<p>Let’s start our analysis. The notebook with the details and data cleaning and merging of the several CSV files can be found on my <a href="https://github.com/pwolter/HockeyStats">GitHub repository</a>.</p>
+<p>The “Country that produces more NHL players” graph source is <a href="https://public.tableau.com/profile/pablo.wolter#!/vizhome/CountrythatproducesmoreNHLplayers/CountrythatproducesmoreNHLplayers">here</a>. The graph was uploaded to Tableau public for easy access.</p>
+</section>
+<section id="what-are-the-leagues-best-goalies" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-leagues-best-goalies">What are the league’s best goalies?</h2>
+<p>I started with the goalies because I found a very important issue with the save percentage score once I got to them in my work. If we graph the top 10 goalies based on save percentage score in descending order we get the following graph:</p>
+<div id="fig-figure1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption><p></p>
+</figure>
+</div>
+<p>What happened here? None of them are the goalies we are so used to see every game night and all have 100% average save percentages! The answer is these are mostly “<em>emergency goalies</em>”. Do you remember <strong>Scott Foster</strong> who was Blackhawk’s famous contracted emergency goalie? He never suited up for an official game during his tenure with the team. Until that lucky night during the 2017–2018 season when all Blackhawks’ goalies were injured and he was called out to (finally) dress up. He played “<em>the longest 14 minutes of Hockey</em>” of his life as he described it himself in one of the countless interviews he did afterward. He played ~14 minutes and did not receive a goal, so his save percentage is 100% (for his entire NHL career!). To take care of this I considered two alternatives:</p>
+<section id="eliminate-all-goalies-with-100-save-percentage" class="level3">
+<h3 class="anchored" data-anchor-id="eliminate-all-goalies-with-100-save-percentage">Eliminate all goalies with 100% save percentage</h3>
+<p>This alternative is not fair of seasoned goalies and players in general. Veteran goalie players enter the rink to replace the starting goalie when have already received 3–4 goals (or more). So they deserve the good 100% save percentage on these circumstances.</p>
+</section>
+<section id="determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="determine-a-minimum-number-of-seasons-to-be-considered-in-the-analysis">Determine a minimum number of seasons to be considered in the analysis</h3>
+<p>This approach also has some caveats as this arises the question of what does make the minimum number of seasons correct? In spite of this concern, I have selected this option. I decided to set a minimum of <strong>5 seasons</strong> with <strong>81 games per season</strong> (41 home ice plus 41 away games).</p>
+<div id="fig-figure2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption><p></p>
+</figure>
+</div>
+<p>Now we see the usual suspects. <strong>Tuukka Rask</strong> being the goalie with better avg. save percentage followed by two of my favorites: <strong>Carey Price</strong> and <strong>Henrik Lundqvist</strong>. As you can see here their numbers are very close to each other. It is thought to be an NHL goalie! The expectations are very high.</p>
+</section>
+</section>
+<section id="what-are-the-leagues-best-scorer-players" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-leagues-best-scorer-players">What are the league’s best scorer players?</h2>
+<p>Let’s start looking at the best players in terms of total goals.</p>
+<div id="fig-figure3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Total_Goals_by_player.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption><p></p>
+</figure>
+</div>
+<p>This does not really tell us the whole story. This is not 100% accurate or fair as there are players that play fewer games than the others but do score more goals per game and/or per time on ice (minutes played per game). Let’s look at the same metric but now taking into account games played.</p>
+<div id="fig-figure4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption><p></p>
+</figure>
+</div>
+<p>The goals per game tell us that <strong>Alex Ovechkin</strong> maintains the first place as he plays a lot of games and scores a lot too! He scores almost a goal every other game. <strong>Steven Stamkos</strong> follows with a very similar number but has played more than 100 fewer games compared with Ovechkin. <strong>Sidney Crosby</strong> and <strong>Evgeni Malkin</strong> had jumped to the top making the <strong>Penguins</strong> a very dangerous team! No surprise almost all are captains of their respective teams and forwards/wings. <strong>Tyler Seguin</strong> from the <strong>Dallas Stars</strong> has played significantly fewer games, just <strong>489</strong> but hold the 5th position, so he’s very effective scoring goals. On the other hand, <strong>Patrick Kane</strong> has the second high position in games played (on this list) but very low goals, positioning him in the second to last spot.</p>
+<p>Let’s look at the players that spend more time on the ice now to see if this relates to the number of goals.</p>
+<div id="fig-figure5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption><p></p>
+</figure>
+</div>
+<p>Sorting the list by time on ice (<strong>TOI</strong>) the top 10 are all <em>defensemen</em>. The average for defense is around <strong>14–25</strong> minutes per game. That is almost half the game! <strong>Ryan Sutter</strong> plays lots of minutes despite not being present in a lot of games. <strong>Drew Doughty</strong> form the <strong>LA Kings</strong> has been playing almost half a game consistently during this decade.</p>
+<p>Filtering out the defensive players out we see the forwards average TOI.</p>
+<div id="fig-figure6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption><p></p>
+</figure>
+</div>
+<p>Forwards play less time on the ice as they tend to skate more. <strong>Anze Kopitar</strong>, <strong>Ryan Getzlaf</strong> and <strong>Sidney Crosby</strong> top the chart. <strong>Alex Ovechkin</strong> doesn’t top this chart but is a very effective player as his goals per game mark.</p>
+</section>
+<section id="what-are-the-teams-that-score-more-goals" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-teams-that-score-more-goals">What are the teams that score more goals?</h2>
+<p>I have averaged the Top 3 scorers per team goals to put the scoring power per team into perspective. The following graph shows the team with more scoring power thanks to its three top-scoring players.</p>
+<div id="fig-figure7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption><p></p>
+</figure>
+</div>
+<p>Here we can see the <strong>Sharks</strong> top 3 players scored more goals in the last decade that the rest of the teams. They are followed by the <strong>Blackhawks</strong> and <strong>Penguins</strong> in second and third place respectively as the most dangerous teams. The <strong>Capitals</strong>, however, are just in position #4 despite <strong>Alex Ovechkin’s</strong> tremendous production.</p>
+<p>Surprisingly, when looking at the goals per game by team the <strong>Stars</strong> are the team that scores more goals per game (1 goal every 3 games guaranteed!). They are followed by the <strong>Lightning</strong>, <strong>Panthers</strong> and <strong>Oilers</strong>. The <strong>Penguins</strong> are in the fifth position a little short of scoring 1 goal every three games.</p>
+<div id="fig-figure8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="what-are-the-players-that-have-most-penalty-minutes-per-team" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-the-players-that-have-most-penalty-minutes-per-team">What are the players that have most penalty minutes per team?</h2>
+<p>Surprisingly these are no defense. They are forwards. Senators <strong>Chris Neil</strong> tops the chart sitting in the penalty box <em>10 times per 6 games</em>!. He is followed by <strong>Cody McLeod</strong> and <strong>Tom Wilson</strong> each sitting in the penalty box once every game. All very well known for their strength and physicality.</p>
+<div id="fig-figure9" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="what-is-the-most-prolific-country-producing-nhl-players" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-most-prolific-country-producing-nhl-players">What is the most prolific country producing NHL players?</h2>
+<p>It should not be any surprise to find out that <strong>Canada</strong> provides more players to the NHL than any other country.</p>
+<div id="fig-figure10" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Hockey_Country.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption><p></p>
+</figure>
+</div>
+<p>The number of <strong>Canadian</strong> players in the last decade total <strong>1,149</strong>. Followed by the <strong>USA</strong> with <strong>651</strong> and then <strong>Sweden</strong> with <strong>184</strong>. Canadian players almost double the number of American players which in turn almost quadruples the number of players from Sweden.</p>
+<div id="fig-figure11" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption><p></p>
+</figure>
+</div>
+<p>The rest of the top 10 countries only totals <strong>380</strong> players.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This is just a descriptive analysis of a decade of NHL hockey. During the duration of this work, a lot more questions arose that I left out from this post to be able to finish it on time. I am planning to follow up this post with a second part where I will try to answer other interesting questions. Things that will come in the future post(s) are, for example:</p>
+<ul>
+<li>How do teams combine penalty minutes relate to the team losing the game?</li>
+<li>Does it have any relation to the team playing in home ice or away?</li>
+<li>Do top scorers make a difference in the last period (3rd period) or Overtime (OT) in the games?</li>
+</ul>
+<p>Did your favorite player show up in the ranking presented in this work? Let me know in the comments. Also, let me know what else will you be interested in seeing analyzed in the second part. Thank you for reading it!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Data Science</category>
+  <category>Analytics</category>
+  <guid>https://pwolter.github.io/posts/decade_of_hockey/index.html</guid>
+  <pubDate>Tue, 11 Feb 2020 08:00:00 GMT</pubDate>
+  <media:content url="https://pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Archive</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://pwolter.github.io/posts/archive.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div> ]]></description>
+  <guid>https://pwolter.github.io/posts/archive.html</guid>
+  <pubDate>Sun, 29 Jan 2023 21:44:38 GMT</pubDate>
+</item>
 </channel>
 </rss>

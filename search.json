@@ -70,13 +70,6 @@
     "text": "No matching items"
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "posts/Disaster_Response_Pipeline/index.html",
     "href": "posts/Disaster_Response_Pipeline/index.html",
     "title": "Disaster Response Pipeline",
@@ -102,13 +95,13 @@
     "href": "index.html",
     "title": "Blog",
     "section": "",
-    "text": "I am a software engineer interested in big data and analytics as a whole. I like data science, machine learning and all in between.\nOn my spare time I scuba dive, both recreational and technically. I play ice hockey, run, bike, and snowboard. When seated still, I like to read, listen music and learn new skills.\nI am from Chile, but moved around due diferent reasons. Some are intollerance and some my own choices. I live in Seattle, Washington in the United States. I like it here."
+    "text": "I am a software engineer interested in big data and analytics as a whole. I like data science, machine learning and all in between.\nOn my spare time I scuba dive, both recreational and technically. I play ice hockey, run, bike, and snowboard. When seated still, I like to read, listen music and learn new skills.\nI am from Chile, but moved around due different reasons. Some are intolerance and some my own choices. I live in Seattle, Washington in the United States. I like it here."
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "No matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPablo Wolter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n123\n\n\nSecond Tag\n\n\n\n\nThis is a test post. In this post, I try out different functionalities\n\n\n\n\n\n\nJun 1, 2022\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nSpark\n\n\nML\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\nNLP\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nFeb 11, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\nNo matching items"
   }
 ]
