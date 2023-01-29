@@ -1,7 +1,7 @@
 ---
-title: "Blog"
+title: "The dark Side of the Spoon"
 listing:
-  contents: posts/**/*.qmd
+  contents: posts
   sort: 
     - "date desc"
     - "title desc"
