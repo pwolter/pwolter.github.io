@@ -7,7 +7,6 @@
     "listing": "/blog.html",
     "items": [
       "/posts/archive.html",
-      "/posts/Test_Blog/test_Blog.html",
       "/posts/sparkify/index.html",
       "/posts/Disaster_Response_Pipeline/index.html",
       "/posts/decade_of_hockey/index.html"
