@@ -12,11 +12,9 @@ author: 'Pablo Wolter'
 
 # Table of content settings
 toc: true
-toc-depth: 3
+toc-depth: 5
 
 page-layout: article
-
-title-block-banner: true
 
 comments: 
   utterances: 
