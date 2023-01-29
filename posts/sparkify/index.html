@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pablo Wolter">
+<meta name="dcterms.date" content="2020-05-09">
+
+<title>Pablo Wolter - Churn prediction using Spark</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Pablo Wolter</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="dropdown-header">
+ Blog</li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/pwolter">Github</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/pwolter/">LinkedIn</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Churn prediction using Spark</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Spark</div>
+                <div class="quarto-category">ML</div>
+                <div class="quarto-category">Analytics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pablo Wolter </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 9, 2020</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#churn-prediction-using-spark" id="toc-churn-prediction-using-spark" class="nav-link active" data-scroll-target="#churn-prediction-using-spark">Churn prediction using Spark</a>
+  <ul class="collapse">
+  <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Project description</a></li>
+  <li><a href="#business-understanding" id="toc-business-understanding" class="nav-link" data-scroll-target="#business-understanding">Business understanding</a></li>
+  <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding">Data understanding</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data preparation</a></li>
+  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model selection</a></li>
+  <li><a href="#best-model-selection" id="toc-best-model-selection" class="nav-link" data-scroll-target="#best-model-selection">Best model selection</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Sparkyfy-Cover.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Photo by Zarak Khan on Unsplash</figcaption><p></p>
+</figure>
+</div>
+<section id="churn-prediction-using-spark" class="level1">
+<h1>Churn prediction using Spark</h1>
+<p>A fun churn project in Spark</p>
+<p>You can find the original blog post in Medium <a href="https://towardsdatascience.com/churn-prediction-using-spark-d9c2da720bc8">here</a></p>
+<section id="project-description" class="level2">
+<h2 class="anchored" data-anchor-id="project-description">Project description</h2>
+<p>The following project tries to predict user churn rate in a fictitious music streaming service called Sparkify.</p>
+<p>I used Spark in Amazon Web Services (<strong>AWS</strong>) with an Elastic Map Reduce (<strong>EMR</strong>) cluster of 3 <strong>m5.xlarge</strong> machines. One driver and two workers. The dataset size is 12 Gbytes and was read from an AWS Simple Storage Service (S3) bucket in JSON format. This file contains activity registered from users as they used the service daily.</p>
+<p>As software libraries go I have used: PySpark, Python’s Spark API. AWS EMR version 5.29.0. Logistic Regression, Random Forest, Gradient Boost Trees (GBT) Classifier, and Naive Bayes form Spark’s Machine Learning Library. Pandas and Matplotlib from the standard data science Python stack.</p>
+</section>
+<section id="business-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="business-understanding">Business understanding</h2>
+<p>Churn prediction is an important classification use case for banks, insurance companies, telcos, cable TV operators, and streaming services such as Netflix, Hulu, Spotify, and Apple Music. Companies that can predict customers who are more likely to cancel the subscription to their service can implement a more effective customer retention strategy.</p>
+<p>Customer churn costs companies approximately <em>$136 billion</em> per year according to a study done by a leading customer engagement analytics firm <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<blockquote class="blockquote">
+<p>Research done by Bain &amp; Company shows increasing customer retention rates by just <strong>5%</strong> increases profits by <strong>25%</strong> to <strong>95%</strong> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+</blockquote>
+<p>The justification for spending resources in churn reduction is based on a study made by Lee Resource Inc.&nbsp;where they show that attracting new customers can cost a company five times more than keeping an existing one! <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+</section>
+<section id="data-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="data-understanding">Data understanding</h2>
+<p>The dataset has a total of <strong>543,705 rows</strong> and <strong>18 columns</strong>. The schema is the following:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Data-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Dataset schema</figcaption><p></p>
+</figure>
+</div>
+<p>We have a total of 22 unique entries in the <em>page</em> category.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Page_column_content.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">page column content</figcaption><p></p>
+</figure>
+</div>
+<p>I defined a new column called <strong>churn</strong> that consists of any of <strong>Cancellation Confirmation</strong> or <strong>Submit Downgrade</strong> events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Distribution of hits per page</figcaption><p></p>
+</figure>
+</div>
+<p>We can see that <strong>NextSong</strong> page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is <strong>Home</strong> followed by three that indicate interaction with the service: <strong>Thumbs Up</strong>, <strong>Add to Playlist</strong> and, <strong>Add Friend</strong>. These three indicate a positive experience with the service. On the other hand, we have <strong>Roll Advert</strong>, <strong>Thumbs Down</strong> and, <strong>Error</strong> as possible indicators of a bad experience for users with the service.</p>
+<p><img src="Data-2.png" class="img-fluid"></p>
+<p>As we can see from the summary, we are facing a very unbalanced dataset. The ratio of no-churn (0) and churn (1) is <strong>2,516</strong>.</p>
+<p>There is a total of <strong>225,393 female</strong> and <strong>302,612 male</strong> users with 15,700 users not revealing their gender that I have categorized as <strong>U</strong> (Unavailable):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Gender_column_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gender column distribution</figcaption><p></p>
+</figure>
+</div>
+<p>We have a total of <strong>428,597 paid</strong> users and <strong>115,108</strong> users in the <strong>free</strong> plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="paid_vs_free_users.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">paid vs free users</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data preparation</h2>
+<p>The first thing I tackled was to solve the unbalance issue. I used a technique called <em>over-sampling</em>. It is a very basic method where I took advantage of PySpark’s explode dataframe feature to select as many events from the underrepresented class (churn equals 1 in this case) to fill in the difference until I got a balanced data set to work with.</p>
+<p>There are more advanced methods that I read about it but they are mostly built for <em>Pandas/Numpy</em> dataframes/sets and did not parallelize well in my Spark environment. This definitively needed more time and investigation to find a more robust solution. The most promising method I learned is <strong>SMOTE</strong> where interested readers can find more details <a href="https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/">here</a> and <a href="https://arxiv.org/abs/1106.1813">here</a>.</p>
+<p>After applying this technique I have expanded and balanced the dataframe augmenting it ~50%:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Balanced_data_set.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Balanced data set</figcaption><p></p>
+</figure>
+</div>
+<p>Going from a total of <strong>543,705</strong> entries to a total of <strong>1,086,945</strong>. This proved very useful as my model’s accuracy improved and I reduced significantly the overfit problems I faced without it. Even though it is not perfect and can be improved further.</p>
+<p>The <strong>userAgent</strong> provides some information I build two features that I used: <strong>os</strong> and <strong>browser</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Browser_count.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Browser count</figcaption><p></p>
+</figure>
+</div>
+<p>From the <em>browser</em>, we can see that <strong>642,801</strong> use <strong>Safari</strong> and <strong>249,372</strong> use <strong>Firefox</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="OS_distribution.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">OS distribution</figcaption><p></p>
+</figure>
+</div>
+<p><strong>Windows</strong> is the more used operating system followed by <strong>Macintosh</strong> and <strong>X11</strong> (Linux). <strong>iPhone</strong> is the 4th more used and <em>compatible</em> maybe means <strong>Android</strong>?</p>
+<p>I used the <em>ts</em> (timestamp) column to build more features. From the <em>ts</em> I constructed the <strong>day_of_week</strong> and <strong>hour</strong> column.</p>
+<p>Using these new columns we can see that users tend to listen to more songs towards the end of the day. Users start listening after lunch, peaking at 4–5 PM (during the commute drive?).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption><p></p>
+</figure>
+</div>
+<p>Users listen to songs more during weekdays too. <strong>Thursday</strong> seems to be the day that stands out but not by much to make conclusions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Number of songs played by day of the week</figcaption><p></p>
+</figure>
+</div>
+<p>I have constructed the following features:</p>
+<ul>
+<li><strong>saved_settings</strong> Count of all ‘<em>Save Settings</em>’ page event grouped by ‘<em>userId</em>’</li>
+<li><strong>num_songs</strong> Count of number of <em>‘song’</em> played by users (grouped by ‘<em>userId</em>’)</li>
+<li><strong>thumbs_up</strong> Count of all ‘<em>Thumbs Up</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>num_advertisement</strong> Count of all ‘<em>Roll Advert</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>thumbs_down</strong> Count of all ‘<em>Thumbs Down</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>playlist_added</strong> Count of all ‘<em>Add to Playlist</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>friend_added</strong> Count of all ‘<em>Add Friend</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>errors_pages</strong> Count of all ‘<em>Error</em>’ page event grouped by <em>‘userId’</em></li>
+<li><strong>songs_persession</strong> Average songs (by ‘<em>Next Song</em>’ page event) played by users (grouped by <em>‘userId’</em>) on a given session (<em>‘sessionId’</em>)</li>
+</ul>
+<p>I have used StringIndexer, VectorAssembler and, Normalizer from PySpark ML feature’s library. <strong>StringIndexer</strong> encodes a string column of labels to a column of label indices. <strong>VectorAssembler</strong> which is a transformer combines a given list of columns/features into a single vector column as required by the ML algorithms. Finally, a <strong>Normalizer</strong> is a <strong>Transformer</strong> that transforms a dataset of <em>Vector rows</em>, normalizing each <em>Vector</em> to have unit norm. It takes parameter <code>p</code>, which specifies the <code>p-norm</code> used for normalization. (<code>p=2</code> by default.) This normalization can help standardize your input data and improve the behavior of learning algorithms.</p>
+</section>
+<section id="modeling" class="level2">
+<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
+<p>I have split the dataset in training and testing sets with an <strong>80–20</strong> percent split respectively to move to the modeling phase.</p>
+<p>For modeling, I used Logistic Regression, Random Forest Classifier, GBT Classifier, and Naive Bayes algorithms from the Spark ML library. I measured the best performer, using the <code>F-1</code> score metric as a parameter for all of them to select the best and fine-tune it.</p>
+<p><code>F-1</code> score makes more sense for our churn rate prediction model because we are more interested in the <strong>False Negatives</strong> and <strong>False Positives</strong>. The first one because it indicates that we predicted users not leaving that did churn. The second one indicates users we predict leaving that did not leave. With the above, I am not saying that <strong>True Negative</strong> (predicted users not leaving who leave the service) is not important too!</p>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model selection</h2>
+<p>I trained <strong>Logistic Regression</strong>, <strong>Random Forest Classifier</strong>, <strong>GBT Classifier</strong>, and <strong>Naive Bayes</strong> algorithms with the default parameters on the ‘<em>train</em>’ dataset and evaluated it with the ‘<em>test</em>’ dataset.</p>
+<div id="fig-table1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption><p></p>
+</figure>
+</div>
+<p>Where:</p>
+<ul>
+<li><strong>F1</strong> - F-1 score</li>
+<li><strong>WP</strong> - Weighted Precision</li>
+<li><strong>WR</strong> - Weighted Recall</li>
+</ul>
+</section>
+<section id="best-model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="best-model-selection">Best model selection</h2>
+<p>From <a href="#fig-table1">Figure&nbsp;1.1</a> we can see that the best performing model is <strong>GBTClassifier</strong>. I fine-tuned this model running a <strong>Cross-Validation</strong> with <code>5</code> folds and a parameter grid as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption><p></p>
+</figure>
+</div>
+<p>I evaluated the model with the same metrics as before obtaining the following values:</p>
+<div id="fig-table2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>As we can see this fine-tuned model provides a <strong>4%</strong> increase in all metrics from the previous run and almost a <strong>10%</strong> increase compared to the other models!</p>
+<p>Our model predicted <strong>46,435</strong> users leaving who did leave (True Positive) and <strong>58,499</strong> users not leaving who leave the service (True Negative). The model also predicted <strong>13,790</strong> users leaving who did not leave (False Positive) and <strong>4,047</strong> users not leaving who did leave (False Negative).</p>
+<p>Our model though is far from perfect. With a <em>precision</em> of only <strong>77%</strong> and a <em>recall</em> of <strong>92%</strong> means we predict accurately <code>2/3</code> of the churn cases correctly.</p>
+<p><strong>GBTClassifier</strong> was the best of all the algorithms I tried in this project and also was the one that took longer to train as it trains one tree after the other. I had issues in the performance of the EMR cluster and had to do some configurations to be successful in training all these models in Spark. For all these details please head to my <a href="https://github.com/pwolter/sparkify">GitHub</a> repository.</p>
+<p>As I mentioned before there is plenty of room to improve the over/under-sample of this imbalanced dataset. If time and budget permits a more broad grid search can be performed with more hyperparameters than I used here to improve the model performance but that will require, time and budget as EMR is not a free service.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.globenewswire.com/news-release/2018/09/27/1577343/0/en/New-research-finds-not-valuing-customers-leads-to-136-billion-switching-epidemic.html">New research finds not valuing customers leads to 136 billion switching epidemic</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www2.bain.com/Images/BB_Prescription_cutting_costs.pdf">BB_Prescription_cutting_costs.pdf</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.forbes.com/sites/alexlawrence/2012/11/01/five-customer-retention-tipsfor-entrepreneurs/">Five customer retention tips for entrepreneurs</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="pwolter/blog_comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
