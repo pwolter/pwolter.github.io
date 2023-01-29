@@ -2,26 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/pwolter/pwolter.github.io/index.html</loc>
-    <lastmod>2023-01-29T22:14:27.821Z</lastmod>
+    <lastmod>2023-01-29T23:08:41.085Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/pwolter/pwolter.github.io/blog.html</loc>
-    <lastmod>2023-01-29T22:14:28.637Z</lastmod>
+    <lastmod>2023-01-29T23:08:41.841Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</loc>
-    <lastmod>2023-01-29T22:14:29.013Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/pwolter/pwolter.github.io/posts/archive.html</loc>
-    <lastmod>2023-01-29T22:14:29.333Z</lastmod>
+    <lastmod>2023-01-29T23:08:42.205Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/index.html</loc>
-    <lastmod>2023-01-29T22:14:29.801Z</lastmod>
+    <lastmod>2023-01-29T23:08:42.661Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/pwolter/pwolter.github.io/posts/sparkify/index.html</loc>
-    <lastmod>2023-01-29T22:14:30.289Z</lastmod>
+    <lastmod>2023-01-29T23:08:43.117Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/pwolter/pwolter.github.io/posts/quarto-test/hello.html</loc>
+    <lastmod>2023-01-29T23:08:43.433Z</lastmod>
   </url>
 </urlset>

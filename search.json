@@ -9,9 +9,9 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "Blog",
+    "title": "The dark Side of the Spoon",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nArchive\n\n\n\n\n\n\n\n\n\n\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nChurn prediction using Spark\n\n\n\n\n\n\n\nSpark\n\n\nML\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nDisaster Response Pipeline\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\nNLP\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nAnalyzing a decade of NHL Hockey\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nFeb 11, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto Basics\n\n\n\n\n\n\n\n\n\n\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nChurn prediction using Spark\n\n\n\n\n\n\n\nSpark\n\n\nML\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nMay 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nDisaster Response Pipeline\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\nNLP\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\n  \n\n\n\n\nAnalyzing a decade of NHL Hockey\n\n\n\n\n\n\n\nData Science\n\n\nAnalytics\n\n\n\n\n\n\n\n\n\n\n\nFeb 11, 2020\n\n\nPablo Wolter\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Disaster_Response_Pipeline/index.html",
@@ -19,13 +19,6 @@
     "title": "Disaster Response Pipeline",
     "section": "",
     "text": "In this project, we analyzed disaster data provided by Figure Eight to build a Natural Language Processing (NLP) model for an API that classifies disaster messages.\nThe provided data set contains real messages that were sent during disaster events. We have created a machine learning pipeline to categorize these events so that users of the application can send the messages to an appropriate disaster relief agency to take proper and timely action.\nThe project includes a web application were an emergency worker can input a new message and get classification results in several categories. The web application also displays visualizations of the data. The code can be accessed here\n\n\nWe have used the following libraries besides the regular Python Data Science stack:\n\nScikit learn\nNLTK\nsqlalchemy\nFlask\npickle 0.20\nPlotly\nargparser\n\nTo install them just run:\npip install -u scikit-learn nltk sqlalchemy flask pickleshare plotly\n\n\n\nThe project is divided into three main components:\n\n\nA Python script, process_data.py, contains the data cleaning pipeline that:\n\nLoads the messages and categories datasets\nMerges the two datasets\nCleans the data\nStores it in an SQLite database\n\n\n\n\nA Python script, train_classifier.py, that holds the code of the machine learning pipeline that:\n\nLoads data from the SQLite database saved before\nSplits the dataset into training and test sets\nBuilds a text processing and machine learning pipeline\nTrains and tunes a model using GridSearchCV\nOutputs results on the test set\nExports the final model as a pickle file\n\n\n\n\nHolds the code of the Web Interface from which the end-user will enter the message’s text to get the predictions. This page will guide the emergency worker providing predictions about the type of emergency at hand.\n\n\n\n\nThe list of the files used in this project are:\n- app\n|  - template\n|  |- master.html   # main page of web app\n|  |- go.html       # classification result page of web app\n|- run.py           # Flask file that runs the app\n\n- data\n|- disaster_categories.csv  # data to process\n|- disaster_messages.csv    # data to process\n|- process_data.py          # process data and saves it into a database\n|- DisasterResponse.db      # database to save clean data to\n\n- models\n|- train_classifier.py  # machine learning modeling and prediction\n|- classifier.pkl       # saved model\n\n- images\n|- English_No-English.png     # English/No-English messages distribution\n|- Message_distribution.png   # Messages distribution histogram\n\n- README.md\n\n\n\n\n\nRun the following commands in the project’s root directory to set up your database and model.\nTo run ETL pipeline that loads the source CSV files, cleans them and stores the cleaned resulting Pandas Dataframe in a database. Run the following under the data directory.\npython process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db\nTo run ML pipeline that trains classifier and saves the model in a pickle file run the following from the models directory:\npython train_classifier.py ../data/DisasterResponse.db classifier.pkl\nRun the following command in the app directory to run the web application in order to do predictions:\npython run.py\n\nThen go to http://0.0.0.0:3001/ to launch the web interface of the application\nIn the box on the top enter the message to classify and click on the “Classify Message” button."
-  },
-  {
-    "objectID": "posts/archive.html",
-    "href": "posts/archive.html",
-    "title": "Archive",
-    "section": "",
-    "text": "No matching items"
   },
   {
     "objectID": "posts/decade_of_hockey/index.html",
@@ -96,5 +89,12 @@
     "title": "Churn prediction using Spark",
     "section": "Conclusion",
     "text": "Conclusion\nAs we can see this fine-tuned model provides a 4% increase in all metrics from the previous run and almost a 10% increase compared to the other models!\nOur model predicted 46,435 users leaving who did leave (True Positive) and 58,499 users not leaving who leave the service (True Negative). The model also predicted 13,790 users leaving who did not leave (False Positive) and 4,047 users not leaving who did leave (False Negative).\nOur model though is far from perfect. With a precision of only 77% and a recall of 92% means we predict accurately 2/3 of the churn cases correctly.\nGBTClassifier was the best of all the algorithms I tried in this project and also was the one that took longer to train as it trains one tree after the other. I had issues in the performance of the EMR cluster and had to do some configurations to be successful in training all these models in Spark. For all these details please head to my GitHub repository.\nAs I mentioned before there is plenty of room to improve the over/under-sample of this imbalanced dataset. If time and budget permits a more broad grid search can be performed with more hyperparameters than I used here to improve the model performance but that will require, time and budget as EMR is not a free service."
+  },
+  {
+    "objectID": "posts/quarto-test/hello.html",
+    "href": "posts/quarto-test/hello.html",
+    "title": "Quarto Basics",
+    "section": "",
+    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nr = np.arange(0, 2, 0.01)\ntheta = 4 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
   }
 ]

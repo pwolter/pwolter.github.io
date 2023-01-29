@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pablo Wolter">
-<meta name="dcterms.date" content="2020-03-09">
 
-<title>Pablo Wolter - Disaster Response Pipeline</title>
+<title>Pablo Wolter - Quarto Basics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,13 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Disaster Response Pipeline</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Data Science</div>
-                <div class="quarto-category">Analytics</div>
-                <div class="quarto-category">NLP</div>
-              </div>
-                  </div>
+      <h1 class="title">Quarto Basics</h1>
+                      </div>
   </div>
     
   
@@ -188,12 +182,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             </div>
     </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">March 9, 2020</p>
-      </div>
-    </div>
     
       
     </div>
@@ -207,18 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#disaster-response-pipeline-project" id="toc-disaster-response-pipeline-project" class="nav-link active" data-scroll-target="#disaster-response-pipeline-project">Disaster Response Pipeline Project</a>
-  <ul>
-  <li><a href="#libraries-used" id="toc-libraries-used" class="nav-link" data-scroll-target="#libraries-used">Libraries used</a></li>
-  <li><a href="#project-description" id="toc-project-description" class="nav-link" data-scroll-target="#project-description">Project description</a>
-  <ul>
-  <li><a href="#etl-pipeline" id="toc-etl-pipeline" class="nav-link" data-scroll-target="#etl-pipeline">1. ETL Pipeline</a></li>
-  <li><a href="#ml-pipeline" id="toc-ml-pipeline" class="nav-link" data-scroll-target="#ml-pipeline">2. ML Pipeline</a></li>
-  <li><a href="#flask-web-app" id="toc-flask-web-app" class="nav-link" data-scroll-target="#flask-web-app">3. Flask Web App</a></li>
-  </ul></li>
-  <li><a href="#files-description" id="toc-files-description" class="nav-link" data-scroll-target="#files-description">Files description</a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
-  </ul></li>
+  <li><a href="#polar-axis" id="toc-polar-axis" class="nav-link active" data-scroll-target="#polar-axis">Polar Axis</a></li>
   </ul>
 </nav>
     </div>
@@ -228,99 +205,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="disaster-response-pipeline-project" class="level1">
-<h1>Disaster Response Pipeline Project</h1>
-<p><img src="Message_distribution.png" class="img-fluid"></p>
-<p>In this project, we analyzed disaster data provided by <a href="https://www.figure-eight.com/">Figure Eight</a> to build a <strong>Natural Language Processing (NLP)</strong> model for an API that classifies disaster messages.</p>
-<p>The provided data set contains real messages that were sent during disaster events. We have created a machine learning pipeline to categorize these events so that users of the application can send the messages to an appropriate disaster relief agency to take proper and timely action.</p>
-<p>The project includes a web application were an emergency worker can input a new message and get classification results in several categories. The web application also displays visualizations of the data. The code can be accessed <a href="https://github.com/pwolter/DisasterRecovery">here</a></p>
-<section id="libraries-used" class="level2">
-<h2 class="anchored" data-anchor-id="libraries-used">Libraries used</h2>
-<p>We have used the following libraries besides the regular Python Data Science stack:</p>
-<ul>
-<li>Scikit learn</li>
-<li>NLTK</li>
-<li>sqlalchemy</li>
-<li>Flask</li>
-<li>pickle 0.20</li>
-<li>Plotly</li>
-<li>argparser</li>
-</ul>
-<p>To install them just run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-u</span> scikit-learn nltk sqlalchemy flask pickleshare plotly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="project-description" class="level2">
-<h2 class="anchored" data-anchor-id="project-description">Project description</h2>
-<p>The project is divided into three main components:</p>
-<section id="etl-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="etl-pipeline">1. ETL Pipeline</h3>
-<p>A Python script, <code>process_data.py</code>, contains the data cleaning pipeline that:</p>
-<ul>
-<li>Loads the messages and categories datasets</li>
-<li>Merges the two datasets</li>
-<li>Cleans the data</li>
-<li>Stores it in an SQLite database</li>
-</ul>
-</section>
-<section id="ml-pipeline" class="level3">
-<h3 class="anchored" data-anchor-id="ml-pipeline">2. ML Pipeline</h3>
-<p>A Python script, <code>train_classifier.py</code>, that holds the code of the machine learning pipeline that:</p>
-<ul>
-<li>Loads data from the SQLite database saved before</li>
-<li>Splits the dataset into training and test sets</li>
-<li>Builds a text processing and machine learning pipeline</li>
-<li>Trains and tunes a model using GridSearchCV</li>
-<li>Outputs results on the test set</li>
-<li>Exports the final model as a pickle file</li>
-</ul>
-</section>
-<section id="flask-web-app" class="level3">
-<h3 class="anchored" data-anchor-id="flask-web-app">3. Flask Web App</h3>
-<p>Holds the code of the <strong>Web Interface</strong> from which the end-user will enter the message’s text to get the predictions. This page will guide the emergency worker providing predictions about the type of emergency at hand.</p>
-</section>
-</section>
-<section id="files-description" class="level2">
-<h2 class="anchored" data-anchor-id="files-description">Files description</h2>
-<p>The list of the files used in this project are:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>- app</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>|  - template</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>|  |- master.html   # main page of web app</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>|  |- go.html       # classification result page of web app</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>|- run.py           # Flask file that runs the app</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>- data</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>|- disaster_categories.csv  # data to process</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>|- disaster_messages.csv    # data to process</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>|- process_data.py          # process data and saves it into a database</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>|- DisasterResponse.db      # database to save clean data to</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>- models</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>|- train_classifier.py  # machine learning modeling and prediction</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>|- classifier.pkl       # saved model</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>- images</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>|- English_No-English.png     # English/No-English messages distribution</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>|- Message_distribution.png   # Messages distribution histogram</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>- README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="English_No-English.png" class="img-fluid"></p>
-</section>
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<ol type="1">
-<li><p>Run the following commands in the project’s root directory to set up your database and model.</p>
-<p>To run ETL pipeline that loads the source CSV files, cleans them and stores the cleaned resulting Pandas Dataframe in a database. Run the following under the data directory.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To run ML pipeline that trains classifier and saves the model in a pickle file run the following from the models directory:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>python train_classifier.py ..<span class="op">/</span>data<span class="op">/</span>DisasterResponse.db classifier.pkl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Run the following command in the app directory to run the web application in order to do predictions:</p>
-<pre><code>python run.py</code></pre></li>
-</ol>
-<p>Then go to <code>http://0.0.0.0:3001/</code> to launch the web interface of the application</p>
-<p>In the box on the top enter the message to classify and click on the “<strong>Classify Message</strong>” button.</p>
+<section id="polar-axis" class="level2">
+<h2 class="anchored" data-anchor-id="polar-axis">Polar Axis</h2>
+<p>For a demonstration of a line plot on a polar axis, see <a href="#fig-polar">Figure&nbsp;1</a>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  subplot_kw <span class="op">=</span> {<span class="st">'projection'</span>: <span class="st">'polar'</span>} </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ax.plot(theta, r)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-polar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="hello_files/figure-html/fig-polar-output-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
