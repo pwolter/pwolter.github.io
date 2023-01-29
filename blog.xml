@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Pablo Wolter</title>
-<link>https://pwolter.github.io/blog.html</link>
-<atom:link href="https://pwolter.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://github.com/pwolter/pwolter.github.io/blog.html</link>
+<atom:link href="https://github.com/pwolter/pwolter.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my ideas, work and dreams. Maybe</description>
-<generator>quarto-1.1.251</generator>
-<lastBuildDate>Sat, 09 May 2020 07:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.313</generator>
+<lastBuildDate>Sat, 09 May 2020 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Churn prediction using Spark</title>
   <dc:creator>Pablo Wolter</dc:creator>
-  <link>https://pwolter.github.io/posts/sparkify/index.html</link>
+  <link>https://github.com/pwolter/pwolter.github.io/posts/sparkify/index.html</link>
   <description><![CDATA[ 
 
 
@@ -22,7 +22,7 @@
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Photo by Zarak Khan on Unsplash</figcaption><p></p>
 </figure>
 </div>
@@ -50,38 +50,38 @@
 <p>The dataset has a total of <strong>543,705 rows</strong> and <strong>18 columns</strong>. The schema is the following:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Data-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Data-1.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Dataset schema</figcaption><p></p>
 </figure>
 </div>
 <p>We have a total of 22 unique entries in the <em>page</em> category.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Page_column_content.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Page_column_content.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">page column content</figcaption><p></p>
 </figure>
 </div>
 <p>I defined a new column called <strong>churn</strong> that consists of any of <strong>Cancellation Confirmation</strong> or <strong>Submit Downgrade</strong> events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Distribution of hits per page</figcaption><p></p>
 </figure>
 </div>
 <p>We can see that <strong>NextSong</strong> page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is <strong>Home</strong> followed by three that indicate interaction with the service: <strong>Thumbs Up</strong>, <strong>Add to Playlist</strong> and, <strong>Add Friend</strong>. These three indicate a positive experience with the service. On the other hand, we have <strong>Roll Advert</strong>, <strong>Thumbs Down</strong> and, <strong>Error</strong> as possible indicators of a bad experience for users with the service.</p>
-<p><img src="https://pwolter.github.io/posts/sparkify/Data-2.png" class="img-fluid"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Data-2.png" class="img-fluid"></p>
 <p>As we can see from the summary, we are facing a very unbalanced dataset. The ratio of no-churn (0) and churn (1) is <strong>2,516</strong>.</p>
 <p>There is a total of <strong>225,393 female</strong> and <strong>302,612 male</strong> users with 15,700 users not revealing their gender that I have categorized as <strong>U</strong> (Unavailable):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Gender_column_distribution.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Gender_column_distribution.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Gender column distribution</figcaption><p></p>
 </figure>
 </div>
 <p>We have a total of <strong>428,597 paid</strong> users and <strong>115,108</strong> users in the <strong>free</strong> plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/paid_vs_free_users.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/paid_vs_free_users.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">paid vs free users</figcaption><p></p>
 </figure>
 </div>
@@ -93,7 +93,7 @@
 <p>After applying this technique I have expanded and balanced the dataframe augmenting it ~50%:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Balanced_data_set.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Balanced_data_set.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Balanced data set</figcaption><p></p>
 </figure>
 </div>
@@ -101,14 +101,14 @@
 <p>The <strong>userAgent</strong> provides some information I build two features that I used: <strong>os</strong> and <strong>browser</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Browser_count.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Browser_count.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Browser count</figcaption><p></p>
 </figure>
 </div>
 <p>From the <em>browser</em>, we can see that <strong>642,801</strong> use <strong>Safari</strong> and <strong>249,372</strong> use <strong>Firefox</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/OS_distribution.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/OS_distribution.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">OS distribution</figcaption><p></p>
 </figure>
 </div>
@@ -117,14 +117,14 @@
 <p>Using these new columns we can see that users tend to listen to more songs towards the end of the day. Users start listening after lunch, peaking at 4–5 PM (during the commute drive?).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption><p></p>
 </figure>
 </div>
 <p>Users listen to songs more during weekdays too. <strong>Thursday</strong> seems to be the day that stands out but not by much to make conclusions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Number of songs played by day of the week</figcaption><p></p>
 </figure>
 </div>
@@ -153,7 +153,7 @@
 <p>I trained <strong>Logistic Regression</strong>, <strong>Random Forest Classifier</strong>, <strong>GBT Classifier</strong>, and <strong>Naive Bayes</strong> algorithms with the default parameters on the ‘<em>train</em>’ dataset and evaluated it with the ‘<em>test</em>’ dataset.</p>
 <div id="fig-table1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption><p></p>
 </figure>
 </div>
@@ -169,14 +169,14 @@
 <p>From Figure&nbsp;1.1 we can see that the best performing model is <strong>GBTClassifier</strong>. I fine-tuned this model running a <strong>Cross-Validation</strong> with <code>5</code> folds and a parameter grid as follows:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption><p></p>
 </figure>
 </div>
 <p>I evaluated the model with the same metrics as before obtaining the following values:</p>
 <div id="fig-table2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/sparkify/Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption><p></p>
 </figure>
 </div>
@@ -205,14 +205,14 @@
   <category>Spark</category>
   <category>ML</category>
   <category>Analytics</category>
-  <guid>https://pwolter.github.io/posts/sparkify/index.html</guid>
-  <pubDate>Sat, 09 May 2020 07:00:00 GMT</pubDate>
-  <media:content url="https://pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" medium="image" type="image/jpeg"/>
+  <guid>https://github.com/pwolter/pwolter.github.io/posts/sparkify/index.html</guid>
+  <pubDate>Sat, 09 May 2020 00:00:00 GMT</pubDate>
+  <media:content url="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Disaster Response Pipeline</title>
   <dc:creator>Pablo Wolter</dc:creator>
-  <link>https://pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</link>
+  <link>https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</link>
   <description><![CDATA[ 
 
 
@@ -220,7 +220,7 @@
 
 <section id="disaster-response-pipeline-project" class="level1">
 <h1>Disaster Response Pipeline Project</h1>
-<p><img src="https://pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" class="img-fluid"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" class="img-fluid"></p>
 <p>In this project, we analyzed disaster data provided by <a href="https://www.figure-eight.com/">Figure Eight</a> to build a <strong>Natural Language Processing (NLP)</strong> model for an API that classifies disaster messages.</p>
 <p>The provided data set contains real messages that were sent during disaster events. We have created a machine learning pipeline to categorize these events so that users of the application can send the messages to an appropriate disaster relief agency to take proper and timely action.</p>
 <p>The project includes a web application were an emergency worker can input a new message and get classification results in several categories. The web application also displays visualizations of the data. The code can be accessed <a href="https://github.com/pwolter/DisasterRecovery">here</a></p>
@@ -293,7 +293,7 @@
 <span id="cb2-19">|- Message_distribution.png   # Messages distribution histogram</span>
 <span id="cb2-20"></span>
 <span id="cb2-21">- README.md</span></code></pre></div>
-<p><img src="https://pwolter.github.io/posts/Disaster_Response_Pipeline/English_No-English.png" class="img-fluid"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/English_No-English.png" class="img-fluid"></p>
 </section>
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
@@ -317,14 +317,14 @@
   <category>Data Science</category>
   <category>Analytics</category>
   <category>NLP</category>
-  <guid>https://pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</guid>
-  <pubDate>Mon, 09 Mar 2020 07:00:00 GMT</pubDate>
-  <media:content url="https://pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" medium="image" type="image/png" height="69" width="144"/>
+  <guid>https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/index.html</guid>
+  <pubDate>Mon, 09 Mar 2020 00:00:00 GMT</pubDate>
+  <media:content url="https://github.com/pwolter/pwolter.github.io/posts/Disaster_Response_Pipeline/Message_distribution.png" medium="image" type="image/png" height="69" width="144"/>
 </item>
 <item>
   <title>Analyzing a decade of NHL Hockey</title>
   <dc:creator>Pablo Wolter</dc:creator>
-  <link>https://pwolter.github.io/posts/decade_of_hockey/index.html</link>
+  <link>https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/index.html</link>
   <description><![CDATA[ 
 
 
@@ -335,7 +335,7 @@
 <p>Seasons from 2010 to 2019</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption><p></p>
 </figure>
 </div>
@@ -359,7 +359,7 @@
 <p>I started with the goalies because I found a very important issue with the save percentage score once I got to them in my work. If we graph the top 10 goalies based on save percentage score in descending order we get the following graph:</p>
 <div id="fig-figure1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption><p></p>
 </figure>
 </div>
@@ -373,7 +373,7 @@
 <p>This approach also has some caveats as this arises the question of what does make the minimum number of seasons correct? In spite of this concern, I have selected this option. I decided to set a minimum of <strong>5 seasons</strong> with <strong>81 games per season</strong> (41 home ice plus 41 away games).</p>
 <div id="fig-figure2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption><p></p>
 </figure>
 </div>
@@ -385,14 +385,14 @@
 <p>Let’s start looking at the best players in terms of total goals.</p>
 <div id="fig-figure3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Total_Goals_by_player.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Total_Goals_by_player.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption><p></p>
 </figure>
 </div>
 <p>This does not really tell us the whole story. This is not 100% accurate or fair as there are players that play fewer games than the others but do score more goals per game and/or per time on ice (minutes played per game). Let’s look at the same metric but now taking into account games played.</p>
 <div id="fig-figure4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption><p></p>
 </figure>
 </div>
@@ -400,7 +400,7 @@
 <p>Let’s look at the players that spend more time on the ice now to see if this relates to the number of goals.</p>
 <div id="fig-figure5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption><p></p>
 </figure>
 </div>
@@ -408,7 +408,7 @@
 <p>Filtering out the defensive players out we see the forwards average TOI.</p>
 <div id="fig-figure6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption><p></p>
 </figure>
 </div>
@@ -419,7 +419,7 @@
 <p>I have averaged the Top 3 scorers per team goals to put the scoring power per team into perspective. The following graph shows the team with more scoring power thanks to its three top-scoring players.</p>
 <div id="fig-figure7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption><p></p>
 </figure>
 </div>
@@ -427,7 +427,7 @@
 <p>Surprisingly, when looking at the goals per game by team the <strong>Stars</strong> are the team that scores more goals per game (1 goal every 3 games guaranteed!). They are followed by the <strong>Lightning</strong>, <strong>Panthers</strong> and <strong>Oilers</strong>. The <strong>Penguins</strong> are in the fifth position a little short of scoring 1 goal every three games.</p>
 <div id="fig-figure8" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption><p></p>
 </figure>
 </div>
@@ -437,7 +437,7 @@
 <p>Surprisingly these are no defense. They are forwards. Senators <strong>Chris Neil</strong> tops the chart sitting in the penalty box <em>10 times per 6 games</em>!. He is followed by <strong>Cody McLeod</strong> and <strong>Tom Wilson</strong> each sitting in the penalty box once every game. All very well known for their strength and physicality.</p>
 <div id="fig-figure9" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption><p></p>
 </figure>
 </div>
@@ -447,14 +447,14 @@
 <p>It should not be any surprise to find out that <strong>Canada</strong> provides more players to the NHL than any other country.</p>
 <div id="fig-figure10" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Hockey_Country.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Hockey_Country.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption><p></p>
 </figure>
 </div>
 <p>The number of <strong>Canadian</strong> players in the last decade total <strong>1,149</strong>. Followed by the <strong>USA</strong> with <strong>651</strong> and then <strong>Sweden</strong> with <strong>184</strong>. Canadian players almost double the number of American players which in turn almost quadruples the number of players from Sweden.</p>
 <div id="fig-figure11" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://pwolter.github.io/posts/decade_of_hockey/Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption><p></p>
 </figure>
 </div>
@@ -477,14 +477,14 @@
  ]]></description>
   <category>Data Science</category>
   <category>Analytics</category>
-  <guid>https://pwolter.github.io/posts/decade_of_hockey/index.html</guid>
-  <pubDate>Tue, 11 Feb 2020 08:00:00 GMT</pubDate>
-  <media:content url="https://pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" medium="image" type="image/jpeg"/>
+  <guid>https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/index.html</guid>
+  <pubDate>Tue, 11 Feb 2020 00:00:00 GMT</pubDate>
+  <media:content url="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Archive</title>
   <dc:creator>Pablo Wolter</dc:creator>
-  <link>https://pwolter.github.io/posts/archive.html</link>
+  <link>https://github.com/pwolter/pwolter.github.io/posts/archive.html</link>
   <description><![CDATA[ 
 
 
@@ -502,8 +502,8 @@
 No matching items
 </div>
 </div> ]]></description>
-  <guid>https://pwolter.github.io/posts/archive.html</guid>
-  <pubDate>Sun, 29 Jan 2023 21:49:04 GMT</pubDate>
+  <guid>https://github.com/pwolter/pwolter.github.io/posts/archive.html</guid>
+  <pubDate>Sun, 29 Jan 2023 22:14:28 GMT</pubDate>
 </item>
 </channel>
 </rss>

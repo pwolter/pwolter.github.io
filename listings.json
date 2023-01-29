@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/posts/archive.html",
-    "items": []
-  },
-  {
     "listing": "/blog.html",
     "items": [
       "/posts/archive.html",
@@ -11,5 +7,9 @@
       "/posts/Disaster_Response_Pipeline/index.html",
       "/posts/decade_of_hockey/index.html"
     ]
+  },
+  {
+    "listing": "/posts/archive.html",
+    "items": []
   }
 ]
