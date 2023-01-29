@@ -2,7 +2,6 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/quarto-test/hello.html",
       "/posts/sparkify/index.html",
       "/posts/Disaster_Response_Pipeline/index.html",
       "/posts/decade_of_hockey/index.html"
