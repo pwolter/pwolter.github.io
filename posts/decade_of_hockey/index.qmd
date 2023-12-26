@@ -83,7 +83,7 @@ I have averaged the Top 3 scorers per team goals to put the scoring power per te
 
 ![Average of total goals of the top 3 scorers per team](Avg_Top_3_Scorers_per_Team.png){#fig-figure7}
 
-Here we can see the **Sharks** top 3 players scored more goals in the last decade that the rest of the teams. They are followed by the **Blackhawks** and **Penguins** in second and third place respectively as the most dangerous teams. The **Capitals**, however, are just in position #4 despite **Alex Ovechkin’s** tremendous production.
+Here we can see the **Capitals** top 3 players scored more goals in the last decade that the rest of the teams, which is not a surprise with **Alex Ovechkin’s** tremendous production. They are followed by the **Sharks**, **Lightning** and **Penguins** as the most dangerous teams.
 
 Surprisingly, when looking at the goals per game by team the **Stars** are the team that scores more goals per game (1 goal every 3 games guaranteed!). They are followed by the **Lightning**, **Panthers** and **Oilers**. The **Penguins** are in the fifth position a little short of scoring 1 goal every three games.
 
