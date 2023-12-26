@@ -1,5 +1,5 @@
 ---
-title: "Blog"
+title: "Pablo Wolter"
 image: images/pwolter_pic.png
 about:
   template: jolla

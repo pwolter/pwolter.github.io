@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Pablo Wolter"
+  title: "The Blog of Pablo Wolter"
   description: "A place for my ideas, work and dreams. Maybe"
   navbar:
     right:

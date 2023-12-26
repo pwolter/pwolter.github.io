@@ -1,5 +1,5 @@
 ---
-title: "The dark Side of the Spoon"
+title: "Blog"
 listing:
   contents: posts
   sort: 
@@ -9,7 +9,7 @@ listing:
   categories: true
   sort-ui: true
   filter-ui: true
-#  fields: [date, title, reading-time, description, categories]
+  fields: [date, title, reading-time, description, categories]
   feed: true
 page-layout: full
 title-block-banner: true

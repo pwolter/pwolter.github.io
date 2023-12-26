@@ -1,0 +1,14 @@
+---
+title: 'Sports coaching and management'
+date: '2023-12-22'
+categories: ['Data Science', 'Analytics']
+image: "Cover.jpg"
+crossref:
+  chapters: true
+---
+
+![Photo by GR Stocks on Unsplash](Cover.jpg)
+
+# What sports coaching and management at work
+
+For the last 4-5 months I have been thinking about what coorporation management can learn from sports coaching specially to what it concerns with performance improvement, honest and timely feedback to improve not only the individual's but the team's overall performance 
