@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pablo Wolter">
 <meta name="dcterms.date" content="2020-02-11">
 
-<title>Pablo Wolter - Analyzing a decade of NHL Hockey</title>
+<title>The Blog of Pablo Wolter - Analyzing a decade of NHL Hockey</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -57,7 +57,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -72,9 +73,10 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Pablo Wolter</span>
+    <span class="navbar-title">The Blog of Pablo Wolter</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -83,21 +85,22 @@ ul.task-list li input[type="checkbox"] {
   <li class="dropdown-header">
  <span class="menu-text">Blog</span></li>
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
- <span class="menu-text">The dark Side of the Spoon</span></a>
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/pwolter"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/pwolter" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text">Github</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/pwolter/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/pwolter/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text">LinkedIn</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -172,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Cover.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption><p></p>
+<figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption>
 </figure>
 </div>
 <p>The first time I laced a pair of skates I was just 6 years old. My younger brother was just 4. At age 9 I started training in figure skating. One day I was trying to do a very simple jump I was struggling with following the circle on the right of the rink when the hockey team arrived. I don’t know how to explain it. The sound of their skates in the rink when they stopped just blew my mind. That sound of wheels against the tile. The delicate sound of the ball hitting the stick when passing it. That day I was sold. After my practice, I spoke with my coach and I switched that same day to hockey. The President of the club I played all my amateur career gave me her son’s stick, a small one for junior players. I never figured skated in my life again. Since that day I was a hockey player and was making that beautiful sound myself. This wasn’t ice hockey. This was roller blade hockey, 4 wheels in parallel.</p>
@@ -196,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption>
 </figure>
 </div>
 <p>What happened here? None of them are the goalies we are so used to see every game night and all have 100% average save percentages! The answer is these are mostly “<em>emergency goalies</em>”. Do you remember <strong>Scott Foster</strong> who was Blackhawk’s famous contracted emergency goalie? He never suited up for an official game during his tenure with the team. Until that lucky night during the 2017–2018 season when all Blackhawks’ goalies were injured and he was called out to (finally) dress up. He played “<em>the longest 14 minutes of Hockey</em>” of his life as he described it himself in one of the countless interviews he did afterward. He played ~14 minutes and did not receive a goal, so his save percentage is 100% (for his entire NHL career!). To take care of this I considered two alternatives:</p>
@@ -210,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption>
 </figure>
 </div>
 <p>Now we see the usual suspects. <strong>Tuukka Rask</strong> being the goalie with better avg. save percentage followed by two of my favorites: <strong>Carey Price</strong> and <strong>Henrik Lundqvist</strong>. As you can see here their numbers are very close to each other. It is thought to be an NHL goalie! The expectations are very high.</p>
@@ -222,14 +225,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Total_Goals_by_player.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption>
 </figure>
 </div>
 <p>This does not really tell us the whole story. This is not 100% accurate or fair as there are players that play fewer games than the others but do score more goals per game and/or per time on ice (minutes played per game). Let’s look at the same metric but now taking into account games played.</p>
 <div id="fig-figure4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption>
 </figure>
 </div>
 <p>The goals per game tell us that <strong>Alex Ovechkin</strong> maintains the first place as he plays a lot of games and scores a lot too! He scores almost a goal every other game. <strong>Steven Stamkos</strong> follows with a very similar number but has played more than 100 fewer games compared with Ovechkin. <strong>Sidney Crosby</strong> and <strong>Evgeni Malkin</strong> had jumped to the top making the <strong>Penguins</strong> a very dangerous team! No surprise almost all are captains of their respective teams and forwards/wings. <strong>Tyler Seguin</strong> from the <strong>Dallas Stars</strong> has played significantly fewer games, just <strong>489</strong> but hold the 5th position, so he’s very effective scoring goals. On the other hand, <strong>Patrick Kane</strong> has the second high position in games played (on this list) but very low goals, positioning him in the second to last spot.</p>
@@ -237,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption>
 </figure>
 </div>
 <p>Sorting the list by time on ice (<strong>TOI</strong>) the top 10 are all <em>defensemen</em>. The average for defense is around <strong>14–25</strong> minutes per game. That is almost half the game! <strong>Ryan Sutter</strong> plays lots of minutes despite not being present in a lot of games. <strong>Drew Doughty</strong> form the <strong>LA Kings</strong> has been playing almost half a game consistently during this decade.</p>
@@ -245,7 +248,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption>
 </figure>
 </div>
 <p>Forwards play less time on the ice as they tend to skate more. <strong>Anze Kopitar</strong>, <strong>Ryan Getzlaf</strong> and <strong>Sidney Crosby</strong> top the chart. <strong>Alex Ovechkin</strong> doesn’t top this chart but is a very effective player as his goals per game mark.</p>
@@ -256,7 +259,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption>
 </figure>
 </div>
 <p>Here we can see the <strong>Sharks</strong> top 3 players scored more goals in the last decade that the rest of the teams. They are followed by the <strong>Blackhawks</strong> and <strong>Penguins</strong> in second and third place respectively as the most dangerous teams. The <strong>Capitals</strong>, however, are just in position #4 despite <strong>Alex Ovechkin’s</strong> tremendous production.</p>
@@ -264,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure8" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption>
 </figure>
 </div>
 </section>
@@ -274,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure9" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption>
 </figure>
 </div>
 </section>
@@ -284,14 +287,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-figure10" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Hockey_Country.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption>
 </figure>
 </div>
 <p>The number of <strong>Canadian</strong> players in the last decade total <strong>1,149</strong>. Followed by the <strong>USA</strong> with <strong>651</strong> and then <strong>Sweden</strong> with <strong>184</strong>. Canadian players almost double the number of American players which in turn almost quadruples the number of players from Sweden.</p>
 <div id="fig-figure11" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption>
 </figure>
 </div>
 <p>The rest of the top 10 countries only totals <strong>380</strong> players.</p>
@@ -338,9 +341,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -405,6 +422,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

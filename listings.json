@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/Sports_Management/index.html",
       "/posts/sparkify/index.html",
       "/posts/Disaster_Response_Pipeline/index.html",
       "/posts/decade_of_hockey/index.html"

@@ -5,12 +5,41 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Pablo Wolter</title>
+<title>The Blog of Pablo Wolter</title>
 <link>https://github.com/pwolter/pwolter.github.io/blog.html</link>
 <atom:link href="https://github.com/pwolter/pwolter.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for my ideas, work and dreams. Maybe</description>
-<generator>quarto-1.2.313</generator>
-<lastBuildDate>Sat, 09 May 2020 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Fri, 22 Dec 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Sports coaching and management</title>
+  <dc:creator>Pablo Wolter</dc:creator>
+  <link>https://github.com/pwolter/pwolter.github.io/posts/Sports_Management/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://github.com/pwolter/pwolter.github.io/posts/Sports_Management/Cover.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Photo by GR Stocks on Unsplash</figcaption>
+</figure>
+</div>
+<section id="what-sports-coaching-and-management-at-work" class="level1">
+<h1>What sports coaching and management at work</h1>
+<p>For the last 4-5 months I have been thinking about what coorporation management can learn from sports coaching specially to what it concerns with performance improvement, honest and timely feedback to improve not only the individual’s but the team’s overall performance</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Science</category>
+  <category>Analytics</category>
+  <guid>https://github.com/pwolter/pwolter.github.io/posts/Sports_Management/index.html</guid>
+  <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://github.com/pwolter/pwolter.github.io/posts/Sports_Management/Cover.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Churn prediction using Spark</title>
   <dc:creator>Pablo Wolter</dc:creator>
@@ -23,7 +52,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Sparkyfy-Cover.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Photo by Zarak Khan on Unsplash</figcaption><p></p>
+<figcaption class="figure-caption">Photo by Zarak Khan on Unsplash</figcaption>
 </figure>
 </div>
 <section id="churn-prediction-using-spark" class="level1">
@@ -51,21 +80,21 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Data-1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Dataset schema</figcaption><p></p>
+<figcaption class="figure-caption">Dataset schema</figcaption>
 </figure>
 </div>
 <p>We have a total of 22 unique entries in the <em>page</em> category.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Page_column_content.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">page column content</figcaption><p></p>
+<figcaption class="figure-caption">page column content</figcaption>
 </figure>
 </div>
 <p>I defined a new column called <strong>churn</strong> that consists of any of <strong>Cancellation Confirmation</strong> or <strong>Submit Downgrade</strong> events as a confirmation of a user that has left the service or stop paying for it (free subscription). The distribution of hits per page is:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Distribution_of_hits_per_page.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Distribution of hits per page</figcaption><p></p>
+<figcaption class="figure-caption">Distribution of hits per page</figcaption>
 </figure>
 </div>
 <p>We can see that <strong>NextSong</strong> page is accessed a lot, which makes sense as it indicates users are listening to songs. Next, is <strong>Home</strong> followed by three that indicate interaction with the service: <strong>Thumbs Up</strong>, <strong>Add to Playlist</strong> and, <strong>Add Friend</strong>. These three indicate a positive experience with the service. On the other hand, we have <strong>Roll Advert</strong>, <strong>Thumbs Down</strong> and, <strong>Error</strong> as possible indicators of a bad experience for users with the service.</p>
@@ -75,14 +104,14 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Gender_column_distribution.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Gender column distribution</figcaption><p></p>
+<figcaption class="figure-caption">Gender column distribution</figcaption>
 </figure>
 </div>
 <p>We have a total of <strong>428,597 paid</strong> users and <strong>115,108</strong> users in the <strong>free</strong> plan/service. As we have stated before we have to make sure that we keep these paid subscribers as much as we can to maximize the revenue (or minimize the loss).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/paid_vs_free_users.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">paid vs free users</figcaption><p></p>
+<figcaption class="figure-caption">paid vs free users</figcaption>
 </figure>
 </div>
 </section>
@@ -94,7 +123,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Balanced_data_set.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Balanced data set</figcaption><p></p>
+<figcaption class="figure-caption">Balanced data set</figcaption>
 </figure>
 </div>
 <p>Going from a total of <strong>543,705</strong> entries to a total of <strong>1,086,945</strong>. This proved very useful as my model’s accuracy improved and I reduced significantly the overfit problems I faced without it. Even though it is not perfect and can be improved further.</p>
@@ -102,14 +131,14 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Browser_count.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Browser count</figcaption><p></p>
+<figcaption class="figure-caption">Browser count</figcaption>
 </figure>
 </div>
 <p>From the <em>browser</em>, we can see that <strong>642,801</strong> use <strong>Safari</strong> and <strong>249,372</strong> use <strong>Firefox</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/OS_distribution.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">OS distribution</figcaption><p></p>
+<figcaption class="figure-caption">OS distribution</figcaption>
 </figure>
 </div>
 <p><strong>Windows</strong> is the more used operating system followed by <strong>Macintosh</strong> and <strong>X11</strong> (Linux). <strong>iPhone</strong> is the 4th more used and <em>compatible</em> maybe means <strong>Android</strong>?</p>
@@ -118,14 +147,14 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Number_of_songs_played_by_the_hour_of_the_day.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption><p></p>
+<figcaption class="figure-caption">Number of songs played by the hour of the day</figcaption>
 </figure>
 </div>
 <p>Users listen to songs more during weekdays too. <strong>Thursday</strong> seems to be the day that stands out but not by much to make conclusions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Number_of_songs_played_by_day_of_the_week.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Number of songs played by day of the week</figcaption><p></p>
+<figcaption class="figure-caption">Number of songs played by day of the week</figcaption>
 </figure>
 </div>
 <p>I have constructed the following features:</p>
@@ -154,7 +183,7 @@
 <div id="fig-table1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Table1_Model_results_summary.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Model results summary</figcaption>
 </figure>
 </div>
 <p>Where:</p>
@@ -170,14 +199,14 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Parameters_grid_for_model_fine-tune.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption><p></p>
+<figcaption class="figure-caption">Parameters grid for model fine-tune</figcaption>
 </figure>
 </div>
 <p>I evaluated the model with the same metrics as before obtaining the following values:</p>
 <div id="fig-table2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/sparkify/Table2_Best_model_parameters_summary.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.2: Best model parameters summary</figcaption>
 </figure>
 </div>
 </section>
@@ -237,7 +266,11 @@
 <li>argparser</li>
 </ul>
 <p>To install them just run:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">pip</span> install <span class="at" style="color: #657422;">-u</span> scikit-learn nltk sqlalchemy flask pickleshare plotly</span></code></pre></div>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-u</span> scikit-learn nltk sqlalchemy flask pickleshare plotly</span></code></pre></div>
 </section>
 <section id="project-description" class="level2">
 <h2 class="anchored" data-anchor-id="project-description">Project description</h2>
@@ -302,7 +335,11 @@
 <p>To run ETL pipeline that loads the source CSV files, cleans them and stores the cleaned resulting Pandas Dataframe in a database. Run the following under the data directory.</p>
 <div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db</span></code></pre></div>
 <p>To run ML pipeline that trains classifier and saves the model in a pickle file run the following from the models directory:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">python train_classifier.py ..<span class="op" style="color: #5E5E5E;">/</span>data<span class="op" style="color: #5E5E5E;">/</span>DisasterResponse.db classifier.pkl</span></code></pre></div></li>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">python train_classifier.py ..<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>data<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>DisasterResponse.db classifier.pkl</span></code></pre></div></li>
 <li><p>Run the following command in the app directory to run the web application in order to do predictions:</p>
 <pre><code>python run.py</code></pre></li>
 </ol>
@@ -336,7 +373,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Cover.jpeg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption><p></p>
+<figcaption class="figure-caption">Photo by Seth Hoffman on Unsplash</figcaption>
 </figure>
 </div>
 <p>The first time I laced a pair of skates I was just 6 years old. My younger brother was just 4. At age 9 I started training in figure skating. One day I was trying to do a very simple jump I was struggling with following the circle on the right of the rink when the hockey team arrived. I don’t know how to explain it. The sound of their skates in the rink when they stopped just blew my mind. That sound of wheels against the tile. The delicate sound of the ball hitting the stick when passing it. That day I was sold. After my practice, I spoke with my coach and I switched that same day to hockey. The President of the club I played all my amateur career gave me her son’s stick, a small one for junior players. I never figured skated in my life again. Since that day I was a hockey player and was making that beautiful sound myself. This wasn’t ice hockey. This was roller blade hockey, 4 wheels in parallel.</p>
@@ -360,7 +397,7 @@
 <div id="fig-figure1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Average_Safe_Percentage_by_Goalie.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Average Safe Percentage by Goalie</figcaption>
 </figure>
 </div>
 <p>What happened here? None of them are the goalies we are so used to see every game night and all have 100% average save percentages! The answer is these are mostly “<em>emergency goalies</em>”. Do you remember <strong>Scott Foster</strong> who was Blackhawk’s famous contracted emergency goalie? He never suited up for an official game during his tenure with the team. Until that lucky night during the 2017–2018 season when all Blackhawks’ goalies were injured and he was called out to (finally) dress up. He played “<em>the longest 14 minutes of Hockey</em>” of his life as he described it himself in one of the countless interviews he did afterward. He played ~14 minutes and did not receive a goal, so his save percentage is 100% (for his entire NHL career!). To take care of this I considered two alternatives:</p>
@@ -374,7 +411,7 @@
 <div id="fig-figure2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Goalies_Avg_Save_Percentage.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.2: Top 10 Goalies Avg. Save Percentage</figcaption>
 </figure>
 </div>
 <p>Now we see the usual suspects. <strong>Tuukka Rask</strong> being the goalie with better avg. save percentage followed by two of my favorites: <strong>Carey Price</strong> and <strong>Henrik Lundqvist</strong>. As you can see here their numbers are very close to each other. It is thought to be an NHL goalie! The expectations are very high.</p>
@@ -386,14 +423,14 @@
 <div id="fig-figure3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Total_Goals_by_player.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.3: Total goals by player</figcaption>
 </figure>
 </div>
 <p>This does not really tell us the whole story. This is not 100% accurate or fair as there are players that play fewer games than the others but do score more goals per game and/or per time on ice (minutes played per game). Let’s look at the same metric but now taking into account games played.</p>
 <div id="fig-figure4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Players_Goals_per_Game.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.4: Top 10 Players Goals Per Game</figcaption>
 </figure>
 </div>
 <p>The goals per game tell us that <strong>Alex Ovechkin</strong> maintains the first place as he plays a lot of games and scores a lot too! He scores almost a goal every other game. <strong>Steven Stamkos</strong> follows with a very similar number but has played more than 100 fewer games compared with Ovechkin. <strong>Sidney Crosby</strong> and <strong>Evgeni Malkin</strong> had jumped to the top making the <strong>Penguins</strong> a very dangerous team! No surprise almost all are captains of their respective teams and forwards/wings. <strong>Tyler Seguin</strong> from the <strong>Dallas Stars</strong> has played significantly fewer games, just <strong>489</strong> but hold the 5th position, so he’s very effective scoring goals. On the other hand, <strong>Patrick Kane</strong> has the second high position in games played (on this list) but very low goals, positioning him in the second to last spot.</p>
@@ -401,7 +438,7 @@
 <div id="fig-figure5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.5: Top 10 Defense Avg. Time On Ice</figcaption>
 </figure>
 </div>
 <p>Sorting the list by time on ice (<strong>TOI</strong>) the top 10 are all <em>defensemen</em>. The average for defense is around <strong>14–25</strong> minutes per game. That is almost half the game! <strong>Ryan Sutter</strong> plays lots of minutes despite not being present in a lot of games. <strong>Drew Doughty</strong> form the <strong>LA Kings</strong> has been playing almost half a game consistently during this decade.</p>
@@ -409,7 +446,7 @@
 <div id="fig-figure6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_No_Defense_Avg_TOI.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.6: Top 10 Players (no Defense) Avg. Time On Ice</figcaption>
 </figure>
 </div>
 <p>Forwards play less time on the ice as they tend to skate more. <strong>Anze Kopitar</strong>, <strong>Ryan Getzlaf</strong> and <strong>Sidney Crosby</strong> top the chart. <strong>Alex Ovechkin</strong> doesn’t top this chart but is a very effective player as his goals per game mark.</p>
@@ -420,7 +457,7 @@
 <div id="fig-figure7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Avg_Top_3_Scorers_per_Team.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.7: Average of total goals of the top 3 scorers per team</figcaption>
 </figure>
 </div>
 <p>Here we can see the <strong>Sharks</strong> top 3 players scored more goals in the last decade that the rest of the teams. They are followed by the <strong>Blackhawks</strong> and <strong>Penguins</strong> in second and third place respectively as the most dangerous teams. The <strong>Capitals</strong>, however, are just in position #4 despite <strong>Alex Ovechkin’s</strong> tremendous production.</p>
@@ -428,7 +465,7 @@
 <div id="fig-figure8" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Avg_Goals_per_Game_per_Team.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.8: Average Goals per game by Team</figcaption>
 </figure>
 </div>
 </section>
@@ -438,7 +475,7 @@
 <div id="fig-figure9" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Top_10_players_Penalty_Minutes_per_Game.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.9: Top 10 players Penalty Minutes Per Game</figcaption>
 </figure>
 </div>
 </section>
@@ -448,14 +485,14 @@
 <div id="fig-figure10" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Hockey_Country.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.10: Country that produces more NHL players from 2010–2019</figcaption>
 </figure>
 </div>
 <p>The number of <strong>Canadian</strong> players in the last decade total <strong>1,149</strong>. Followed by the <strong>USA</strong> with <strong>651</strong> and then <strong>Sweden</strong> with <strong>184</strong>. Canadian players almost double the number of American players which in turn almost quadruples the number of players from Sweden.</p>
 <div id="fig-figure11" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://github.com/pwolter/pwolter.github.io/posts/decade_of_hockey/Number_Players_Country_Table.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.11: Players per country</figcaption>
 </figure>
 </div>
 <p>The rest of the top 10 countries only totals <strong>380</strong> players.</p>
